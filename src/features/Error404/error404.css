@@ -1,0 +1,52 @@
+.container-error404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.title-error404 {
+  font-weight: 700;
+  font-size: 5rem;
+  color: #ff6060;
+}
+
+.description-error404 {
+  font-weight: 500;
+  font-size: 2.25rem;
+  color: #ff6060;
+  font-style: normal;
+}
+
+.link-home {
+  display: flex;
+  align-items: flex-end;
+  height: 6.25rem;
+  font-size: 1.12rem;
+  color: #ff6060;
+  font-weight: 500;
+}
+
+.link-home:hover {
+  color: blue;
+}
+
+/*responsive*/
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  .title-error404 {
+    font-size: 12rem;
+  }
+  .description-error404 {
+    font-size: 1.3rem;
+    width: 60%;
+    text-align: center;
+  }
+  .container-error404 {
+    margin-top: 5rem;
+  }
+  .link-home {
+    font-size: 1.3rem;
+  }
+}
