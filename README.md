@@ -25,6 +25,7 @@ npm start
 - [React.js](https://fr.reactjs.org/) is a JavaScript library for building user interfaces.
 - [React-router-dom](https://www.npmjs.com/package/react-router-dom) is a package used to create links for using React Router in web applications.
 - [Redux-toolkit](https://www.npmjs.com/package/@reduxjs/toolkit) The Redux Toolkit package is intended to be the standard way to write Redux logic.
+- [PrimeReact](https://primereact.org/) is a React component library that aims to simplify modern web application development by providing ready-to-use, responsive, and customizable tools for building engaging, high-performance user interfaces.
 
 ## Additional tools used to create this project:
 
