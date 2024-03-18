@@ -6,7 +6,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { Modal } from '../../components/Modal/Modal';
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
 
-import { useFormData } from '../../components/FormDataContext';
+import { useFormData } from '../../context/CreateEmployeeFormContext';
 
 function CreateEmployee() {
   const { formData, setFormData } = useFormData();

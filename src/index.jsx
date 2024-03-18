@@ -9,6 +9,9 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import EmployeesList from './features/EmployeesList/EmployeesList';
 import Error404 from './features/Error404/Error404';
 import Home from './features/Home/Home';
+
+import { CreateEmployeeProvider } from './context/CreateEmployeeFormContext';
+
 import './index.css';
 
 library.add(faXmark);
@@ -28,7 +31,9 @@ const routes = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={routes} />
+    <CreateEmployeeProvider>
+      <RouterProvider router={routes} />
+    </CreateEmployeeProvider>
   </React.StrictMode>
 );
 
