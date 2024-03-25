@@ -1,1 +1,10 @@
-/* TODO add minimum */
+.title-home {
+  color: black;
+}
+
+.link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}

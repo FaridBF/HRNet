@@ -4,6 +4,12 @@
   justify-content: center;
 }
 
+.title-current-employee {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
 .p-datatable.p-component.p-datatable-selectable.p-datatable-responsive-scroll {
   width: 65%;
 }
@@ -14,14 +20,20 @@
 }
 
 .homePageLink {
+  height: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.p-datatable .p-datatable-header {
+  background-color: #739db5;
 }
 
 /* Styles pour les options de pagination */
 .p-paginator .p-dropdown {
   position: absolute;
-  top: 0;
+  top: 18px;
   left: 0;
 }
 

@@ -14,7 +14,7 @@ export function Modal({ setModalOpen }) {
       <div className='modalContainer'>
         <div className='rightPart'>
           <div className='titleRightPart'>
-            <h1>Employee Created!</h1>
+            <h1 className='title-employee-created'>Employee Created!</h1>
             <button
               className='button'
               onClick={() => {

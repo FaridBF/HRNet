@@ -7,7 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* backdrop-filter: contrast(0.5); */
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -28,33 +27,33 @@
 .titleRightPart {
   text-align: center;
   font-size: 8px;
-  /* border-bottom: 1px #e9e9e8 solid; */
   padding: 0px 25px;
-  /* font-weight: bold; */
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-h1 {
+
+.title-employee-created {
   color: red;
+  display: flex;
+  justify-content: center;
 }
 
 .button {
-  background-color: black;
+  background-color: red;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-weight: bold; */
   cursor: pointer;
   color: white;
   border-radius: 100%;
   font-size: 15px;
   width: 30px;
   height: 30px;
-  top: -12.5px;
-  right: -12.5px;
+  top: -17.5px;
+  right: -17.5px;
   position: absolute;
 }
 

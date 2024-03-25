@@ -1,4 +1,9 @@
 /* Style de create-react-app */
+
+html {
+  background: linear-gradient(to right, #427b9a, #011b2c);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -31,6 +36,10 @@ label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 10px;
+}
+
+a {
+  color: white;
 }
 
 .address {
