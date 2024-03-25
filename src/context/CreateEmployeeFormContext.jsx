@@ -12,7 +12,7 @@ export const CreateEmployeeProvider = ({ children }) => {
     city: '',
     state: '',
     zipCode: '',
-    department: 'Sales'
+    department: ''
   });
 
   return (

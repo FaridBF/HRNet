@@ -4,7 +4,6 @@
  * @returns {string} - Chaîne de caractères formatée
  */
 function format(date) {
-  console.log('date', date);
   if (!date || !(date instanceof Date)) return ''; // Si la date est null, undefined ou n'est pas un objet Date, retourne une chaîne vide
 
   // Obtenir les composants de la date (année, mois, jour)
