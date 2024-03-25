@@ -10,8 +10,7 @@ export const CustomerService = {
         street: '123 Main Street',
         name: 'Butt',
         city: {
-          name: 'Algeria',
-          code: 'dz'
+          name: 'Algeria'
         },
 
         state: 'Algiers',
@@ -26,8 +25,7 @@ export const CustomerService = {
         street: '456 Elm Street',
         name: 'Darakjy',
         city: {
-          name: 'Egypt',
-          code: 'eg'
+          name: 'Egypt'
         },
         state: 'Cairo',
         zipcode: '67890'
@@ -41,8 +39,7 @@ export const CustomerService = {
         street: '101 Pine Road',
         name: 'Johnson',
         city: {
-          name: 'Los Angeles',
-          code: 'la'
+          name: 'Los Angeles'
         },
         state: 'California',
         zipcode: '90001'
@@ -56,8 +53,7 @@ export const CustomerService = {
         street: '202 Maple Lane',
         name: 'Williams',
         city: {
-          name: 'Chicago',
-          code: 'chi'
+          name: 'Chicago'
         },
         state: 'Illinois',
         zipcode: '60601'
