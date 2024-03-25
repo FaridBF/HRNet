@@ -17,7 +17,6 @@ import { format } from '../../utils/Format.jsx';
 
 function EmployeesList() {
   const { formData } = useFormData();
-  // console.log('formData EMployee list', formData);
   const [customers, setCustomers] = useState([]);
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [filters, setFilters] = useState({
@@ -38,27 +37,41 @@ function EmployeesList() {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
 
   useEffect(() => {
-    CustomerService.getCustomersLarge().then((data) =>
-      // setCustomers(getCustomers(data))
-      setCustomers(data)
-    );
-  }, []);
-
-  // const getCustomers = (data) => {
-  //   return [...(data || [])].map((d) => {
-  //     d.date = new Date(d.date);
-
-  //     return d;
-  //   });
-  // };
-
-  // const formatDate = (value) => {
-  //   return value.toLocaleDateString('en-US', {
-  //     day: '2-digit',
-  //     month: '2-digit',
-  //     year: 'numeric'
-  //   });
-  // };
+    if (
+      formData.firstName ||
+      formData.lastName ||
+      formData.startDate ||
+      formData.department ||
+      formData.dateOfBirth ||
+      formData.street ||
+      formData.city ||
+      formData.state ||
+      formData.zipCode
+    ) {
+      CustomerService.getCustomersLarge().then((data) => {
+        const customerWithFormData = {
+          id: data.length + 1,
+          firstname: formData.firstName,
+          name: formData.lastName,
+          startdate: formData.startDate ? format(formData.startDate) : null,
+          department: formData.department,
+          date: formData.dateOfBirth ? format(formData.dateOfBirth) : null,
+          street: formData.street,
+          city: {
+            name: formData.city
+          },
+          state: formData.state,
+          zipcode: formData.zipCode
+        };
+        const updatedCustomers = [...data, customerWithFormData];
+        setCustomers(updatedCustomers);
+      });
+    } else {
+      CustomerService.getCustomersLarge().then((data) => {
+        setCustomers(data);
+      });
+    }
+  }, [formData]);
 
   const onGlobalFilterChange = (e) => {
     const value = e.target.value;
@@ -86,7 +99,6 @@ function EmployeesList() {
   };
 
   const cityBodyTemplate = (rowData) => {
-    console.log('rowData', rowData);
     return (
       <div className='flex align-items-center gap-2'>
         <span>{rowData.city.name}</span>
@@ -94,15 +106,11 @@ function EmployeesList() {
     );
   };
 
-  // const dateBodyTemplate = (rowData) => {
-  //   return formatDate(rowData.date);
-  // };
-
   const header = renderHeader();
 
   return (
     <>
-      <h1>Current Employees</h1>
+      <h1 className='title-current-employee'>Current Employees</h1>
       <div className='card'>
         <DataTable
           value={customers}
@@ -161,10 +169,7 @@ function EmployeesList() {
             field='date'
             header='Date'
             sortable
-            // filterField='date'
-            // dataType='date'
             style={{ minWidth: '10rem' }}
-            // body={dateBodyTemplate}
           />
           <Column
             field='street'
@@ -197,7 +202,7 @@ function EmployeesList() {
       <div className='homePageLink'>
         <Link to='/'>Home</Link>
       </div>
-
+      {/* 
       {formData && (
         <ul>
           <li>First Name: {formData.firstName}</li>
@@ -213,9 +218,10 @@ function EmployeesList() {
           <li>city: {formData.city}</li>
           <li>state: {formData.state}</li>
           <li>zipCode: {formData.zipCode}</li>
+
           <li>department: {formData.department}</li>
         </ul>
-      )}
+      )} */}
     </>
   );
 }

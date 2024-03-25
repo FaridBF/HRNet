@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import '../CreateEmployee/CreateEmployee.css';
 
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
@@ -10,22 +11,21 @@ import { useFormData } from '../../context/CreateEmployeeFormContext';
 
 function CreateEmployee() {
   const { formData, setFormData } = useFormData();
-
-  console.log('formData CreateEmployee', formData);
   const [modalOpen, setModalOpen] = useState(false);
   const [formValid, setFormValid] = useState(false);
 
   const data = ListOfStatesAmerican.getData();
 
-  const options = data.map(({ name, code }) => ({ label: name, value: code }));
+  const options = data.map(({ name }) => ({ label: name, value: name }));
 
   useEffect(() => {
     localStorage.setItem('formData', JSON.stringify(formData));
     const {
       firstName,
       lastName,
-      dateOfBirth,
+      department,
       startDate,
+      dateOfBirth,
       street,
       city,
       state,
@@ -34,8 +34,9 @@ function CreateEmployee() {
     setFormValid(
       firstName &&
         lastName &&
-        dateOfBirth &&
+        department &&
         startDate &&
+        dateOfBirth &&
         street &&
         city &&
         state &&
@@ -60,13 +61,12 @@ function CreateEmployee() {
       );
       return;
     }
-    console.log(formData);
     setModalOpen(true);
   };
 
   return (
     <>
-      <h2>Create Employee</h2>
+      <h2 className='title-create-employee'>Create Employee</h2>
       <form id='create-employee' onSubmit={handleSubmit}>
         <label htmlFor='first-name'>First Name</label>
         <input
@@ -125,10 +125,8 @@ function CreateEmployee() {
             <Dropdown
               value={formData.state}
               onChange={(e) => handleDateChange('state', e.value)}
-              // options={data}
               options={options}
               optionLabel='label'
-              // optionLabel='name'
               placeholder='Select a State'
               className='w-full md:w-14rem'
             />
@@ -157,11 +155,15 @@ function CreateEmployee() {
           <option value='Legal'>Legal</option>
         </select>
         {/* <button type='submit'>Save</button> */}
-        <Link to='/employees'>
-          <button type='submit' disabled={!formValid}>
-            Save
-          </button>
-        </Link>
+        {/* <Link to='/employees'> */}
+        <button
+          className='button-submit-create-employee'
+          type='submit'
+          disabled={!formValid}
+        >
+          Save
+        </button>
+        {/* </Link> */}
       </form>
 
       {modalOpen && <Modal setModalOpen={setModalOpen} />}
