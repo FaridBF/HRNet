@@ -110,8 +110,11 @@ function EmployeesList() {
 
   return (
     <>
-      <h1 className='title-current-employee'>Current Employees</h1>
-      <div className='card'>
+      <div className='homePageLink'>
+        <h1 className='title-current-employee'>Current Employees</h1>
+        <Link to='/'>Home</Link>
+      </div>
+      <div className='card-current-employee'>
         <DataTable
           value={customers}
           paginator
@@ -199,29 +202,6 @@ function EmployeesList() {
           />
         </DataTable>
       </div>
-      <div className='homePageLink'>
-        <Link to='/'>Home</Link>
-      </div>
-      {/* 
-      {formData && (
-        <ul>
-          <li>First Name: {formData.firstName}</li>
-          <li>Last Name: {formData.lastName}</li>
-          <li>
-            Date of Birth:{' '}
-            {formData.dateOfBirth ? format(formData.dateOfBirth) : ''}
-          </li>
-          <li>
-            startDate: {formData.startDate ? format(formData.startDate) : ''}
-          </li>
-          <li>street: {formData.street}</li>
-          <li>city: {formData.city}</li>
-          <li>state: {formData.state}</li>
-          <li>zipCode: {formData.zipCode}</li>
-
-          <li>department: {formData.department}</li>
-        </ul>
-      )} */}
     </>
   );
 }
