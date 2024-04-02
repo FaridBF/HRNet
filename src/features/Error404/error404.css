@@ -34,7 +34,7 @@
 }
 
 /*responsive*/
-@media screen and (min-width: 0px) and (max-width: 640px) {
+@media screen and (min-width: 0rem) and (max-width: 40rem) {
   .title-error404 {
     font-size: 12rem;
   }

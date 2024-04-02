@@ -11,10 +11,10 @@
 }
 
 .modalContainer {
-  width: 480px;
-  border-radius: 8px;
+  width: 30rem;
+  border-radius: 0.5rem;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0rem 0.31rem 0.93rem;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -26,8 +26,8 @@
 
 .titleRightPart {
   text-align: center;
-  font-size: 8px;
-  padding: 0px 25px;
+  font-size: 0.5rem;
+  padding: 0rem 1.56rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -49,14 +49,23 @@
   cursor: pointer;
   color: white;
   border-radius: 100%;
-  font-size: 15px;
-  width: 30px;
-  height: 30px;
-  top: -17.5px;
-  right: -17.5px;
+  font-size: 0.93rem;
+  width: 1.87rem;
+  height: 1.87rem;
+  top: -1.09rem;
+  right: -1.09rem;
   position: absolute;
 }
 
 .modal-open {
   overflow: hidden;
+}
+
+/*Medias querries- Gestion du Responsive*/
+/* Styles pour les écrans jusqu'à 37.5rem de large */
+@media only screen and (max-width: 37.5rem) {
+  .modalContainer {
+    min-width: 12.5rem;
+    width: 80%;
+  }
 }

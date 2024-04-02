@@ -1,16 +1,16 @@
 form#create-employee {
   background-color: #f0f0f0;
-  border-radius: 10px;
+  border-radius: 0.62rem;
   display: flex;
   width: 25%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.62rem rgba(0, 0, 0, 0.2);
   flex-direction: column;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 0.31rem;
 }
 
 button {
-  margin: 10px;
+  margin: 0.62rem;
 }
 
 .title-create-employee {
@@ -20,12 +20,28 @@ button {
 button.button-submit-create-employee {
   color: white;
   background: linear-gradient(to right, #427b9a, #011b2c);
-  height: 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 60px;
+  height: 1.56rem;
+  box-shadow: 0 0 0.62rem rgba(0, 0, 0, 0.2);
+  width: 3.75rem;
   font-weight: 400;
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 0.31rem;
+  padding: 0.31rem 0.62rem;
   cursor: pointer;
+}
+
+/*Medias querries- Gestion du Responsive*/
+/* Styles pour les écrans jusqu'à 37.5 rem de large */
+@media only screen and (max-width: 37.5rem) {
+  form#create-employee {
+    min-width: 14.68rem;
+  }
+}
+
+/*Medias querries - Responsive*/
+/* Styles pour les écrans de 37.5rem à 1400 pixels de large */
+@media screen and (min-width: 37.5rem) and (max-width: 87.5rem) {
+  form#create-employee {
+    min-width: 18.75rem;
+  }
 }
