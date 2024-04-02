@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import CreateEmployee from '../CreateEmployee/CreateEmployee';
 import './Home.css';
 
+/**
+ * Composant pour la page d'accueil.
+ * @returns {JSX.Element} - Élément JSX représentant la page d'accueil.
+ */
 function Home() {
   return (
     <>
@@ -15,7 +19,6 @@ function Home() {
       <div className='link-container'>
         <Link to='/employees'>View Current Employees</Link>
       </div>
-      {/* TODO add modal */}
     </>
   );
 }

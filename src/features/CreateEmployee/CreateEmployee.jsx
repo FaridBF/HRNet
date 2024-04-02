@@ -9,6 +9,10 @@ import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
 
 import { useFormData } from '../../context/CreateEmployeeFormContext';
 
+/**
+ * Composant pour la création d'un employé.
+ * @returns {JSX.Element} - Élément JSX représentant le formulaire de création d'employé.
+ */
 function CreateEmployee() {
   const { formData, setFormData } = useFormData();
   const [modalOpen, setModalOpen] = useState(false);
@@ -44,15 +48,28 @@ function CreateEmployee() {
     );
   }, [formData]);
 
+  /**
+   * Gère le changement de valeur d'un champ de texte.
+   * @param {object} e - Événement de changement.
+   */
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
 
+  /**
+   * Gère le changement de date dans le calendrier.
+   * @param {string} field - Nom du champ de date.
+   * @param {Date} value - Nouvelle valeur de la date.
+   */
   const handleDateChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
   };
 
+  /**
+   * Gère la soumission du formulaire.
+   * @param {object} e - Événement de soumission.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formValid) {

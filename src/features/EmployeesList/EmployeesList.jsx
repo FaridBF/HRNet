@@ -15,6 +15,10 @@ import '../EmployeesList/EmployeesList.css';
 import { useFormData } from '../../context/CreateEmployeeFormContext.jsx';
 import { format } from '../../utils/Format.jsx';
 
+/**
+ * Composant pour afficher la liste des employés.
+ * @returns {JSX.Element} - Élément JSX représentant la liste des employés.
+ */
 function EmployeesList() {
   const { formData } = useFormData();
   const [customers, setCustomers] = useState([]);
@@ -73,6 +77,10 @@ function EmployeesList() {
     }
   }, [formData]);
 
+  /**
+   * Gère le changement de valeur du filtre global.
+   * @param {object} e - Événement de changement.
+   */
   const onGlobalFilterChange = (e) => {
     const value = e.target.value;
     let _filters = { ...filters };

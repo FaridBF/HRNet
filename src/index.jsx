@@ -16,6 +16,9 @@ import './index.css';
 
 library.add(faXmark);
 
+/**
+ * Définit les routes de l'application et les éléments correspondants à afficher pour chaque route.
+ */
 const routes = createBrowserRouter([
   { errorElement: <Error404 /> },
   {

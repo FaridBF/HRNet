@@ -1,4 +1,11 @@
+/**
+ * Service fournissant une liste des états américains.
+ */
 export const ListOfStatesAmerican = {
+  /**
+   * Obtenir la liste des états américains.
+   * @returns {Array<object>} - Liste des états américains avec leur nom.
+   */
   getData() {
     return [
       { name: 'Alabama' },

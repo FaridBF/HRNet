@@ -1,6 +1,11 @@
 import '../Modal/modal.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/**
+ * Affiche une fenêtre modale avec un message.
+ * @param {object} props - Les propriétés du composant.
+ * @param {function} props.setModalOpen - Fonction pour définir l'état d'ouverture de la modal.
+ */
 export function Modal({ setModalOpen }) {
   document.body.classList.add('modal-open');
 
