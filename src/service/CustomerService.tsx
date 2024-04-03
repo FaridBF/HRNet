@@ -6,7 +6,7 @@ export const CustomerService = {
    * Obtenir les données des clients.
    * @returns {Array<object>} - Liste des clients avec leurs informations (firstname, department etc..).
    */
-  getData() {
+  getData(): Array<object> {
     return [
       {
         id: 1000,
@@ -72,7 +72,7 @@ export const CustomerService = {
    * Obtenir une petite liste de clients.
    * @returns {Promise<Array<object>>} - Liste de clients.
    */
-  getCustomersSmall() {
+  getCustomersSmall(): Promise<Array<object>> {
     return Promise.resolve(this.getData().slice(0, 10));
   },
 
@@ -80,7 +80,7 @@ export const CustomerService = {
    * Obtenir une liste moyenne de clients.
    * @returns {Promise<Array<object>>} - Liste de clients.
    */
-  getCustomersMedium() {
+  getCustomersMedium(): Promise<Array<object>> {
     return Promise.resolve(this.getData().slice(0, 50));
   },
 
@@ -88,7 +88,7 @@ export const CustomerService = {
    * Obtenir une grande liste de clients.
    * @returns {Promise<Array<object>>} - Liste de clients.
    */
-  getCustomersLarge() {
+  getCustomersLarge(): Promise<Array<object>> {
     return Promise.resolve(this.getData().slice(0, 200));
   },
 
@@ -96,7 +96,7 @@ export const CustomerService = {
    * Obtenir une très grande liste de clients.
    * @returns {Promise<Array<object>>} - Liste de clients.
    */
-  getCustomersXLarge() {
+  getCustomersXLarge(): Promise<Array<object>> {
     return Promise.resolve(this.getData());
   },
 
@@ -105,7 +105,7 @@ export const CustomerService = {
    * @param {object} params - Paramètres de requête pour filtrer les clients.
    * @returns {Promise<Array<object>>} - Liste de clients filtrée.
    */
-  getCustomers(params) {
+  getCustomers(params: any): Promise<Array<object>> {
     const queryParams = params
       ? Object.keys(params)
           .map(

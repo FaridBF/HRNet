@@ -1,12 +1,17 @@
+import React from 'react';
 import '../Modal/modal.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+interface ModalProps {
+  setModalOpen: (isOpen: boolean) => void;
+}
 
 /**
  * Affiche une fenêtre modale avec un message.
  * @param {object} props - Les propriétés du composant.
  * @param {function} props.setModalOpen - Fonction pour définir l'état d'ouverture de la modal.
  */
-export function Modal({ setModalOpen }) {
+export const Modal: React.FC<ModalProps> = ({ setModalOpen }) => {
   document.body.classList.add('modal-open');
 
   const handleCloseModal = () => {
@@ -26,11 +31,11 @@ export function Modal({ setModalOpen }) {
                 handleCloseModal();
               }}
             >
-              <FontAwesomeIcon icon='fa-solid fa-xmark' />
+              <FontAwesomeIcon icon={['fas', 'xmark']} />
             </button>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};

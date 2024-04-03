@@ -1,29 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
-
 import 'primereact/resources/themes/saga-blue/theme.css';
 
 import { CustomerService } from '../../service/CustomerService';
 
 import '../EmployeesList/EmployeesList.css';
 
-import { useFormData } from '../../context/CreateEmployeeFormContext.jsx';
-import { format } from '../../utils/Format.jsx';
+import { useFormData } from '../../context/CreateEmployeeFormContext';
+import { format } from '../../utils/Format';
+
+interface Customer {
+  id?: number;
+  firstname?: string;
+  name?: string;
+  startdate?: string;
+  department?: string;
+  date?: string;
+  street?: string;
+  city?: {
+    name: string;
+  };
+  state?: string;
+  zipcode?: string;
+}
 
 /**
  * Composant pour afficher la liste des employés.
  * @returns {JSX.Element} - Élément JSX représentant la liste des employés.
  */
-function EmployeesList() {
+function EmployeesList(): JSX.Element {
   const { formData } = useFormData();
-  const [customers, setCustomers] = useState([]);
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
-  const [filters, setFilters] = useState({
+  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [selectedCustomers, setSelectedCustomers] = useState<Customer[]>([]);
+  const [filters, setFilters] = useState<any>({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: {
       operator: FilterOperator.AND,
@@ -38,56 +51,63 @@ function EmployeesList() {
       constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }]
     }
   });
-  const [globalFilterValue, setGlobalFilterValue] = useState('');
+  const [globalFilterValue, setGlobalFilterValue] = useState<string>('');
 
   useEffect(() => {
-    if (
-      formData.firstName ||
-      formData.lastName ||
-      formData.startDate ||
-      formData.department ||
-      formData.dateOfBirth ||
-      formData.street ||
-      formData.city ||
-      formData.state ||
-      formData.zipCode
-    ) {
-      CustomerService.getCustomersLarge().then((data) => {
-        const customerWithFormData = {
-          id: data.length + 1,
-          firstname: formData.firstName,
-          name: formData.lastName,
-          startdate: formData.startDate ? format(formData.startDate) : null,
-          department: formData.department,
-          date: formData.dateOfBirth ? format(formData.dateOfBirth) : null,
-          street: formData.street,
-          city: {
-            name: formData.city
-          },
-          state: formData.state,
-          zipcode: formData.zipCode
-        };
-        const updatedCustomers = [...data, customerWithFormData];
-        setCustomers(updatedCustomers);
-      });
-    } else {
-      CustomerService.getCustomersLarge().then((data) => {
+    const fetchData = async () => {
+      try {
+        let data: Customer[];
+        if (
+          formData.firstName ||
+          formData.lastName ||
+          formData.startDate ||
+          formData.department ||
+          formData.dateOfBirth ||
+          formData.street ||
+          formData.city ||
+          formData.state ||
+          formData.zipCode
+        ) {
+          const response = await CustomerService.getCustomersLarge();
+          data = [
+            ...response,
+            {
+              id: response.length + 1,
+              firstname: formData.firstName,
+              name: formData.lastName,
+              startdate: formData.startDate ? format(formData.startDate) : null,
+              department: formData.department,
+              date: formData.dateOfBirth ? format(formData.dateOfBirth) : null,
+              street: formData.street,
+              city: {
+                name: formData.city
+              },
+              state: formData.state,
+              zipcode: formData.zipCode
+            }
+          ];
+        } else {
+          data = await CustomerService.getCustomersLarge();
+        }
         setCustomers(data);
-      });
-    }
+      } catch (error) {
+        console.error('Error fetching customers:', error);
+      }
+    };
+
+    fetchData();
   }, [formData]);
 
   /**
    * Gère le changement de valeur du filtre global.
-   * @param {object} e - Événement de changement.
+   * @param {React.ChangeEvent<HTMLInputElement>} e - Événement de changement.
    */
-  const onGlobalFilterChange = (e) => {
+  const onGlobalFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    let _filters = { ...filters };
-
-    _filters['global'].value = value;
-
-    setFilters(_filters);
+    setFilters((prevFilters: any) => ({
+      ...prevFilters,
+      global: { value, matchMode: FilterMatchMode.CONTAINS }
+    }));
     setGlobalFilterValue(value);
   };
 
@@ -106,10 +126,10 @@ function EmployeesList() {
     );
   };
 
-  const cityBodyTemplate = (rowData) => {
+  const cityBodyTemplate = (rowData: Customer) => {
     return (
       <div className='flex align-items-center gap-2'>
-        <span>{rowData.city.name}</span>
+        <span>{rowData.city?.name}</span>
       </div>
     );
   };
@@ -146,7 +166,7 @@ function EmployeesList() {
             'street',
             'city',
             'state',
-            'zipCode'
+            'zipcode'
           ]}
           emptyMessage='No customers found.'
           currentPageReportTemplate='Showing {first} to {last} of {totalRecords} entries'

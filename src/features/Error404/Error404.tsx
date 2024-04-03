@@ -1,12 +1,19 @@
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-
 import './error404.css';
+
+/**
+ * Propriétés du composant Error404.
+ */
+interface Error404Props {}
 
 /**
  * La page 404 est renvoyée pour chaque route inexistante, ou si une
  * valeur présente dans l’URL ne fait pas partie des données renseignées
+ * @param {Error404Props} props - Les propriétés du composant.
+ * @returns {JSX.Element} - Élément JSX représentant la page d'erreur 404.
  */
-function Error404() {
+const Error404: FunctionComponent<Error404Props> = (props) => {
   return (
     <>
       <div className='container-error404'>
@@ -21,6 +28,6 @@ function Error404() {
       </div>
     </>
   );
-}
+};
 
 export default Error404;

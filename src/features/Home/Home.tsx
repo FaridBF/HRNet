@@ -1,13 +1,19 @@
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-
 import CreateEmployee from '../CreateEmployee/CreateEmployee';
 import './Home.css';
 
 /**
+ * Propriétés du composant Home.
+ */
+interface HomeProps {}
+
+/**
  * Composant pour la page d'accueil.
+ * @param {HomeProps} props - Les propriétés du composant.
  * @returns {JSX.Element} - Élément JSX représentant la page d'accueil.
  */
-function Home() {
+const Home: FunctionComponent<HomeProps> = (props) => {
   return (
     <>
       <div className='title'>
@@ -21,6 +27,6 @@ function Home() {
       </div>
     </>
   );
-}
+};
 
 export default Home;

@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+// import { Link } from 'react-router-dom';
 import '../CreateEmployee/CreateEmployee.css';
 
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
 import { Modal } from '../../components/Modal/Modal';
+import { useFormData } from '../../context/CreateEmployeeFormContext';
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
 
-import { useFormData } from '../../context/CreateEmployeeFormContext';
+interface StateOption {
+  label: string;
+  value: string;
+}
 
-/**
- * Composant pour la création d'un employé.
- * @returns {JSX.Element} - Élément JSX représentant le formulaire de création d'employé.
- */
-function CreateEmployee() {
+const CreateEmployee: React.FC = () => {
   const { formData, setFormData } = useFormData();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [formValid, setFormValid] = useState(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [formValid, setFormValid] = useState<boolean>(false);
 
   const data = ListOfStatesAmerican.getData();
-
-  const options = data.map(({ name }) => ({ label: name, value: name }));
+  const options: StateOption[] = data.map(({ name }) => ({
+    label: name,
+    value: name
+  }));
 
   useEffect(() => {
     localStorage.setItem('formData', JSON.stringify(formData));
@@ -36,41 +38,34 @@ function CreateEmployee() {
       zipCode
     } = formData;
     setFormValid(
-      firstName &&
-        lastName &&
-        department &&
-        startDate &&
-        dateOfBirth &&
-        street &&
-        city &&
-        state &&
-        zipCode
+      !!firstName &&
+        !!lastName &&
+        !!department &&
+        !!startDate &&
+        !!dateOfBirth &&
+        !!street &&
+        !!city &&
+        !!state &&
+        !!zipCode
     );
   }, [formData]);
 
-  /**
-   * Gère le changement de valeur d'un champ de texte.
-   * @param {object} e - Événement de changement.
-   */
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
 
-  /**
-   * Gère le changement de date dans le calendrier.
-   * @param {string} field - Nom du champ de date.
-   * @param {Date} value - Nouvelle valeur de la date.
-   */
-  const handleDateChange = (field, value) => {
+  const handleChangeSelect = (value: any) => {
+    setFormData({ ...formData, state: value });
+  };
+
+  const handleDateChange = (field: string, value: Date) => {
     setFormData({ ...formData, [field]: value });
   };
 
-  /**
-   * Gère la soumission du formulaire.
-   * @param {object} e - Événement de soumission.
-   */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formValid) {
       alert(
@@ -104,8 +99,8 @@ function CreateEmployee() {
         <label htmlFor='date-of-birth'>Date of Birth</label>
         <div className='card flex justify-content-center'>
           <Calendar
-            value={formData.dateOfBirth}
-            onChange={(e) => handleDateChange('dateOfBirth', e.value)}
+            value={new Date(formData.dateOfBirth)}
+            onChange={(e) => handleDateChange('dateOfBirth', e.value as Date)}
             dateFormat='dd/mm/yy'
           />
         </div>
@@ -113,8 +108,8 @@ function CreateEmployee() {
         <label htmlFor='start-date'> Start Date</label>
         <div className='card flex justify-content-center'>
           <Calendar
-            value={formData.startDate}
-            onChange={(e) => handleDateChange('startDate', e.value)}
+            value={formData.startDate ? new Date(formData.startDate) : null}
+            onChange={(e) => handleDateChange('startDate', e.value as Date)}
             dateFormat='dd/mm/yy'
           />
         </div>
@@ -141,7 +136,7 @@ function CreateEmployee() {
           <div className='card flex justify-content-center'>
             <Dropdown
               value={formData.state}
-              onChange={(e) => handleDateChange('state', e.value)}
+              onChange={(e) => handleChangeSelect(e.value)}
               options={options}
               optionLabel='label'
               placeholder='Select a State'
@@ -171,8 +166,7 @@ function CreateEmployee() {
           <option value='Human Resources'>Human Resources</option>
           <option value='Legal'>Legal</option>
         </select>
-        {/* <button type='submit'>Save</button> */}
-        {/* <Link to='/employees'> */}
+
         <button
           className='button-submit-create-employee'
           type='submit'
@@ -180,12 +174,11 @@ function CreateEmployee() {
         >
           Save
         </button>
-        {/* </Link> */}
       </form>
 
       {modalOpen && <Modal setModalOpen={setModalOpen} />}
     </>
   );
-}
+};
 
 export default CreateEmployee;
