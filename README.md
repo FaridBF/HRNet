@@ -27,7 +27,6 @@ npm start
 - [Redux-toolkit](https://www.npmjs.com/package/@reduxjs/toolkit) The Redux Toolkit package is intended to be the standard way to write Redux logic.
 - [PrimeReact](https://primereact.org/) is a React component library that aims to simplify modern web application development by providing ready-to-use, responsive, and customizable tools for building engaging, high-performance user interfaces.
 - [TypeScript](https://www.typescriptlang.org/) is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
-- [Cypress](https://www.cypress.io/) allow enable testing for your web applications, debug them visually, and execute them automatically within your continuous integration pipelines.
 
 ## Additional tools used to create this project:
 
