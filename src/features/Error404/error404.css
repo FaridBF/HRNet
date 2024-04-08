@@ -16,7 +16,7 @@
 .description-error404 {
   font-weight: 500;
   font-size: 2.25rem;
-  color: #ff6060;
+  color: white;
   font-style: normal;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .link-home:hover {
-  color: blue;
+  color: black;
 }
 
 /*responsive*/
