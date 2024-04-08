@@ -8,13 +8,21 @@
 git clone https://github.com/FaridBF/HRNet
 ```
 
-2. Install all dependencies with the following command:
+2. Check the prerequisites
+
+```
+node -v
+```
+
+You are need this version v20.10.0 for this project
+
+3. Install all dependencies with the following command:
 
 ```
 npm install
 ```
 
-3. Launch the project with the following command:
+4. Launch the project with the following command:
 
 ```
 npm start
