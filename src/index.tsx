@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-import EmployeesList from './features/EmployeesList/EmployeesList.tsx';
-import Error404 from './features/Error404/Error404.tsx';
-import Home from './features/Home/Home.tsx';
+import EmployeesList from './features/EmployeesList/EmployeesList';
+import Error404 from './features/Error404/Error404';
+import Home from './features/Home/Home';
 
 import { CreateEmployeeProvider } from './context/CreateEmployeeFormContext';
 
@@ -27,11 +27,16 @@ const App = () => (
   </CreateEmployeeProvider>
 );
 
-const root = createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+const rootElement = document.getElementById('root');
+if (rootElement !== null) {
+  const root = createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+} else {
+  console.error("Element with id 'root' not found");
+}
