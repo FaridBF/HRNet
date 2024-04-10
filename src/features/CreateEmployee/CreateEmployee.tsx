@@ -1,14 +1,26 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-// import { Link } from 'react-router-dom';
-import '../CreateEmployee/CreateEmployee.css';
-
-import { Calendar } from 'primereact/calendar';
+import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
-import { Modal } from '../../components/Modal/Modal';
-import { useFormData } from '../../context/CreateEmployeeFormContext';
+import { Calendar } from 'primereact/calendar';
+import Modal from '../../components/Modal/Modal';
+import '../CreateEmployee/CreateEmployee.css';
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
+import { format } from '../../utils/Format';
+import { useFormData } from '../../context/CreateEmployeeFormContext';
 
 const closeButtonImg = require('../../assets/closeButton.png');
+
+interface FormInput {
+  firstName: string;
+  lastName: string;
+  department: string;
+  startDate: string;
+  dateOfBirth: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+}
 
 interface StateOption {
   label: string;
@@ -16,9 +28,12 @@ interface StateOption {
 }
 
 const CreateEmployee: React.FC = () => {
-  const { formData, setFormData } = useFormData();
+  const { setFormData } = useFormData();
+
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [formValid, setFormValid] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+  const [selectedState, setSelectedState] = useState<string>('');
 
   const data = ListOfStatesAmerican.getData();
   const options: StateOption[] = data.map(({ name }) => ({
@@ -26,158 +41,173 @@ const CreateEmployee: React.FC = () => {
     value: name
   }));
 
-  useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData));
-    const {
-      firstName,
-      lastName,
-      department,
-      startDate,
-      dateOfBirth,
-      street,
-      city,
-      state,
-      zipCode
-    } = formData;
-    setFormValid(
-      !!firstName &&
-        !!lastName &&
-        !!department &&
-        !!startDate &&
-        !!dateOfBirth &&
-        !!street &&
-        !!city &&
-        !!state &&
-        !!zipCode
-    );
-  }, [formData]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormInput>();
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-  };
-
-  const handleChangeSelect = (value: any) => {
-    setFormData({ ...formData, state: value });
-  };
-
-  const handleDateChange = (field: string, value: Date) => {
-    setFormData({ ...formData, [field]: value });
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!formValid) {
-      alert(
-        'Merci de saisir les champs nécesssaires à la validation de ce formulaire.'
-      );
-      return;
-    }
+  const onSubmit: SubmitHandler<FormInput> = (data) => {
+    const formDataWithState = {
+      ...data,
+      state: selectedState,
+      startDate: format(startDate),
+      dateOfBirth: format(dateOfBirth)
+    };
+    setFormData(formDataWithState);
+    console.log('formDataWithState', formDataWithState);
     setModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setModalOpen(false); // Ferme le modal lorsqu'on appelle cette fonction
+    setModalOpen(false);
   };
 
   return (
     <>
       <h2 className='title-create-employee'>Create Employee</h2>
-      <form id='create-employee' onSubmit={handleSubmit}>
-        <label htmlFor='first-name'>First Name</label>
-        <input
-          type='text'
-          id='firstName'
-          value={formData.firstName}
-          onChange={handleChange}
-        />
 
-        <label htmlFor='last-name'>Last Name</label>
+      <form id='create-employee' onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor='firstName'>First Name</label>
         <input
-          type='text'
-          id='lastName'
-          value={formData.lastName}
-          onChange={handleChange}
+          {...register('firstName', {
+            required: 'First Name is required',
+            minLength: {
+              value: 2,
+              message: 'First Name should have at least 2 characters'
+            },
+            maxLength: {
+              value: 20,
+              message: 'First Name should not exceed 20 characters'
+            }
+          })}
         />
+        {errors.firstName && (
+          <span className='errorMessage'>{errors.firstName.message}</span>
+        )}
 
-        <label htmlFor='date-of-birth'>Date of Birth</label>
+        <label htmlFor='lastName'>Last Name</label>
+        <input
+          {...register('lastName', {
+            required: 'Last Name is required',
+            minLength: {
+              value: 2,
+              message: 'Last Name should have at least 2 characters'
+            },
+            maxLength: {
+              value: 20,
+              message: 'Last Name should not exceed 20 characters'
+            }
+          })}
+        />
+        {errors.lastName && (
+          <span className='errorMessage'>{errors.lastName.message}</span>
+        )}
+
+        <label htmlFor='dateOfBirth'>Date of Birth</label>
         <div className='card flex justify-content-center'>
           <Calendar
-            value={new Date(formData.dateOfBirth)}
-            onChange={(e) => handleDateChange('dateOfBirth', e.value as Date)}
+            value={dateOfBirth}
+            onChange={(e) => setDateOfBirth(e.value as Date)}
             dateFormat='dd/mm/yy'
           />
+          {errors.dateOfBirth && <span>{`Date of Birth is required`}</span>}
         </div>
 
-        <label htmlFor='start-date'> Start Date</label>
+        <label htmlFor='startDate'>Start Date</label>
         <div className='card flex justify-content-center'>
           <Calendar
-            value={formData.startDate ? new Date(formData.startDate) : null}
-            onChange={(e) => handleDateChange('startDate', e.value as Date)}
+            value={startDate}
+            onChange={(e) => setStartDate(e.value as Date)}
             dateFormat='dd/mm/yy'
           />
+          {errors.startDate && <span>{`Start Date is required`}</span>}
         </div>
 
         <fieldset className='address'>
           <legend>Address</legend>
 
-          <label htmlFor='street'>Street</label>
-          <input
-            id='street'
-            type='text'
-            value={formData.street}
-            onChange={handleChange}
-          />
+          <div className='card flex justify-content-center'>
+            <label htmlFor='street'>Street</label>
+            <input
+              {...register('street', {
+                required: 'Street is required',
+                minLength: {
+                  value: 3,
+                  message: 'Street must be at least 3 characters long'
+                },
+                maxLength: {
+                  value: 100,
+                  message: 'Street must not exceed 100 characters'
+                }
+              })}
+            />
+            {errors.street && (
+              <span className='errorMessage'>{errors.street.message}</span>
+            )}
+          </div>
 
-          <label htmlFor='city'>City</label>
-          <input
-            id='city'
-            type='text'
-            value={formData.city}
-            onChange={handleChange}
-          />
+          <div className='card flex justify-content-center'>
+            <label htmlFor='city'>City</label>
+            <input
+              {...register('city', {
+                required: 'City is required',
+                minLength: {
+                  value: 2,
+                  message: 'City should have at least 2 characters'
+                },
+                maxLength: {
+                  value: 50,
+                  message: 'City should not exceed 50 characters'
+                }
+              })}
+            />
+            {errors.city && (
+              <span className='errorMessage'>{errors.city.message}</span>
+            )}
+          </div>
+
           <label htmlFor='state'>State</label>
           <div className='card flex justify-content-center'>
             <Dropdown
-              value={formData.state}
-              onChange={(e) => handleChangeSelect(e.value)}
+              value={selectedState}
+              onChange={(e) => setSelectedState(e.target.value)}
               options={options}
-              optionLabel='label'
               placeholder='Select a State'
               className='w-full md:w-14rem'
             />
           </div>
-
-          <label htmlFor='zip-code'>Zip Code</label>
-          <input
-            id='zipCode'
-            type='number'
-            value={formData.zipCode}
-            onChange={handleChange}
-          />
+          <label htmlFor='zipCode'>Zip Code</label>
+          <div className='card flex justify-content-center'>
+            <input
+              {...register('zipCode', {
+                required: 'Zip Code is required',
+                pattern: {
+                  value: /^\d{5}(?:[-\s]\d{4})?$/,
+                  message: 'Invalid Zip Code format'
+                }
+              })}
+            />
+            {errors.zipCode && (
+              <span className='errorMessage'>{errors.zipCode.message}</span>
+            )}
+          </div>
         </fieldset>
 
         <label htmlFor='department'>Department</label>
-        <select
-          name='department'
-          id='department'
-          value={formData.department}
-          onChange={handleChange}
-        >
+        <select {...register('department', { required: true })}>
+          <option value=''>Select a department</option>
           <option value='Sales'>Sales</option>
           <option value='Marketing'>Marketing</option>
           <option value='Engineering'>Engineering</option>
           <option value='Human Resources'>Human Resources</option>
           <option value='Legal'>Legal</option>
         </select>
+        {errors.department && (
+          <span className='errorMessage'>{`Department is required`}</span>
+        )}
 
-        <button
-          className='button-submit-create-employee'
-          type='submit'
-          disabled={!formValid}
-        >
+        <button className='button-submit-create-employee' type='submit'>
           Save
         </button>
       </form>
@@ -187,7 +217,7 @@ const CreateEmployee: React.FC = () => {
         src={closeButtonImg}
         isVisible={modalOpen}
         onClose={handleCloseModal}
-      />{' '}
+      />
     </>
   );
 };

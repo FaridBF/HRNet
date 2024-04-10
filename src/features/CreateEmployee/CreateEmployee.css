@@ -30,6 +30,12 @@ button.button-submit-create-employee {
   cursor: pointer;
 }
 
+.card.flex.justify-content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*Medias querries- Gestion du Responsive*/
 /* Styles pour les écrans jusqu'à 37.5 rem de large */
 @media only screen and (max-width: 37.5rem) {

@@ -75,9 +75,13 @@ function EmployeesList(): JSX.Element {
               id: response.length + 1,
               firstname: formData.firstName,
               name: formData.lastName,
-              startdate: formData.startDate ? format(formData.startDate) : null,
+              startdate: formData.startDate
+                ? format(new Date(formData.startDate))
+                : null,
+              date: formData.dateOfBirth
+                ? format(new Date(formData.dateOfBirth))
+                : null,
               department: formData.department,
-              date: formData.dateOfBirth ? format(formData.dateOfBirth) : null,
               street: formData.street,
               city: {
                 name: formData.city

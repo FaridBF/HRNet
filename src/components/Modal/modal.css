@@ -65,6 +65,10 @@
   overflow: hidden;
 }
 
+img {
+  width: 100%;
+}
+
 /*Medias querries- Gestion du Responsive*/
 /* Styles pour les écrans jusqu'à 37.5rem de large */
 @media only screen and (max-width: 37.5rem) {

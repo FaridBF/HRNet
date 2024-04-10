@@ -47,6 +47,16 @@
   justify-content: flex-end;
 }
 
+.errorMessage {
+  width: 70%;
+  font-size: 15px;
+  color: red;
+  display: flex;
+  text-align: center;
+  font-weight: 600;
+  justify-content: center;
+}
+
 /*Medias querries- Gestion du Responsive*/
 /* Styles pour les écrans jusqu'à 37.5rem de large */
 @media only screen and (max-width: 37.5rem) {

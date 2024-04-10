@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
+
 import CreateEmployee from '../CreateEmployee/CreateEmployee';
+
 import './Home.css';
 
 /**
