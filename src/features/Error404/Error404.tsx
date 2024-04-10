@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import './error404.css';
 
 /**
  * Propriétés du composant Error404.

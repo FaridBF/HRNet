@@ -6,7 +6,7 @@
 }
 
 .title-current-employee {
-  color: white;
+  color: var(--color-primary);
   margin: 0;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .p-datatable .p-datatable-header {
-  background-color: #739db5;
+  background-color: var(--color-blue-grey2);
 }
 
 /* Styles pour les options de pagination */
@@ -49,8 +49,8 @@
 
 .errorMessage {
   width: 70%;
-  font-size: 15px;
-  color: red;
+  font-size: 0.93rem;
+  color: var(--color-secondary);
   display: flex;
   text-align: center;
   font-weight: 600;

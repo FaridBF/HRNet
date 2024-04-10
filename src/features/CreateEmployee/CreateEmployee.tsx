@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import Modal from '../../components/Modal/Modal';
-import '../CreateEmployee/CreateEmployee.css';
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
 import { format } from '../../utils/Format';
 import { useFormData } from '../../context/CreateEmployeeFormContext';

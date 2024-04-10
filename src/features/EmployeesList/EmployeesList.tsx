@@ -8,8 +8,6 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 
 import { CustomerService } from '../../service/CustomerService';
 
-import '../EmployeesList/EmployeesList.css';
-
 import { useFormData } from '../../context/CreateEmployeeFormContext';
 import { format } from '../../utils/Format';
 

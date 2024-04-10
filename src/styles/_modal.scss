@@ -13,7 +13,7 @@
 .modalContainer {
   width: 30rem;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: var(--color-primary);
   box-shadow: rgba(0, 0, 0, 0.35) 0rem 0.31rem 0.93rem;
   display: flex;
   flex-direction: row;
@@ -35,23 +35,24 @@
 }
 
 .descriptionModal {
-  padding: 25px;
+  padding: 1.56rem;
 }
 
 .title-employee-created {
-  color: red;
+  color: var(--color-secondary);
   display: flex;
   justify-content: center;
 }
 
 .button {
-  background-color: red;
+  background-color: var(--color-secondary);
+
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: white;
+  color: var(--color-primary);
   border-radius: 100%;
   font-size: 0.93rem;
   width: 1.87rem;

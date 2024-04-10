@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 import CreateEmployee from '../CreateEmployee/CreateEmployee';
 
-import './Home.css';
-
 /**
  * Propriétés du composant Home.
  */

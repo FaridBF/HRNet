@@ -1,5 +1,5 @@
 form#create-employee {
-  background-color: #f0f0f0;
+  background-color: var(--color-light-white);
   border-radius: 0.62rem;
   display: flex;
   width: 25%;
@@ -14,12 +14,16 @@ button {
 }
 
 .title-create-employee {
-  color: white;
+  color: var(--color-primary);
 }
 
 button.button-submit-create-employee {
-  color: white;
-  background: linear-gradient(to right, #427b9a, #011b2c);
+  color: var(--color-primary);
+  background: linear-gradient(
+    to right,
+    var(--color-blue-grey),
+    var(--color-black)
+  );
   height: 1.56rem;
   box-shadow: 0 0 0.62rem rgba(0, 0, 0, 0.2);
   width: 3.75rem;

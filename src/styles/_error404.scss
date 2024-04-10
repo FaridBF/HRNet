@@ -10,13 +10,13 @@
 .title-error404 {
   font-weight: 700;
   font-size: 5rem;
-  color: #ff6060;
+  color: var(--color-coral);
 }
 
 .description-error404 {
   font-weight: 500;
   font-size: 2.25rem;
-  color: white;
+  color: var(--color-primary);
   font-style: normal;
 }
 
@@ -25,12 +25,12 @@
   align-items: flex-end;
   height: 6.25rem;
   font-size: 1.12rem;
-  color: #ff6060;
+  color: var(--color-coral);
   font-weight: 500;
 }
 
 .link-home:hover {
-  color: black;
+  color: var(--color-black);
 }
 
 /*responsive*/

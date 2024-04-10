@@ -10,7 +10,7 @@ import Home from './features/Home/Home';
 
 import { CreateEmployeeProvider } from './context/CreateEmployeeFormContext';
 
-import './index.css';
+import './index.scss';
 
 library.add(faXmark);
 
