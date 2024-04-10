@@ -40,6 +40,10 @@ button {
   align-items: center;
 }
 
+.create-employee__error-message {
+  color: var(--color-secondary);
+}
+
 /* Médias queries - Gestion du Responsive */
 /* Styles pour les écrans jusqu'à 37.5 rem de large */
 @media only screen and (max-width: 37.5rem) {
