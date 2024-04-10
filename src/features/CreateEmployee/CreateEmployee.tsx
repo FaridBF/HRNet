@@ -8,6 +8,8 @@ import { Modal } from '../../components/Modal/Modal';
 import { useFormData } from '../../context/CreateEmployeeFormContext';
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
 
+const closeButtonImg = require('../../assets/closeButton.png');
+
 interface StateOption {
   label: string;
   value: string;
@@ -74,6 +76,10 @@ const CreateEmployee: React.FC = () => {
       return;
     }
     setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false); // Ferme le modal lorsqu'on appelle cette fonction
   };
 
   return (
@@ -175,8 +181,13 @@ const CreateEmployee: React.FC = () => {
           Save
         </button>
       </form>
-
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      <Modal
+        title='Employee created'
+        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus elit libero, at finibus dolor auctor id. Aliquam ut lectus vitae odio tincidunt blandit. Vivamus cursus, lorem ut congue rutrum, lectus eros tristique lectus, vitae imperdiet massa purus a orci. Donec nibh'
+        src={closeButtonImg}
+        isVisible={modalOpen}
+        onClose={handleCloseModal}
+      />{' '}
     </>
   );
 };
