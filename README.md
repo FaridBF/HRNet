@@ -44,5 +44,6 @@ npm start
 - [JSDoc](https://jsdoc.app/) is a tool that allows you to generate documentation from JavaScript code. It uses special documentation comments in the source code to generate HTML documentation pages or JSON files.
 - [Notion](https://www.notion.so/) is a project management and note-taking tool that allows users to collaborate on projects and integrate them with other tools such as Trello, Kanban etc...
 - [Les Hooks](https://fr.reactjs.org/docs/hooks-state.html) provide the ability to use local state and other React features without having to write classes (available since React 16.8).
+- [BEM](https://getbem.com/) is a methodology that helps you to create reusable components and code sharing in front‑end development
 - [Tailor Brands](https://www.tailorbrands.com/) to create a logo
 - [Online-convert](https://www.online-convert.com/) to convert logo into favicon
