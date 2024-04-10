@@ -31,7 +31,7 @@ export const Modal: React.FC<ModalProps> = ({
           <div className='titleRightPart'>
             <h1 className='title-employee-created'>{title}</h1>
             <button className='button' onClick={onClose}>
-              <img src={src} alt='Close Modal' />
+              <img className='img-closeModal' src={src} alt='Close Modal' />
             </button>
           </div>
           <div className='descriptionModal'>

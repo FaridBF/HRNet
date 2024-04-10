@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import CreateEmployee from '../CreateEmployee/CreateEmployee';
 
+const logo = require('../../assets/logo.jpg');
+
 /**
  * Propriétés du composant Home.
  */
@@ -16,8 +18,8 @@ interface HomeProps {}
 const Home: FunctionComponent<HomeProps> = (props) => {
   return (
     <>
-      <div className='title'>
-        <h1 className='title-home'>HRnet</h1>
+      <div className='logo'>
+        <img src={logo} alt='Close Modal' />
       </div>
       <div className='container'>
         <CreateEmployee />
