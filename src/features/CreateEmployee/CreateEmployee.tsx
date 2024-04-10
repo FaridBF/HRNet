@@ -64,7 +64,7 @@ const CreateEmployee: React.FC = () => {
 
   return (
     <>
-      <h2 className='title-create-employee'>Create Employee</h2>
+      <h2 className='create-employee__title'>Create Employee</h2>
 
       <form id='create-employee' onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor='firstName'>First Name</label>
@@ -82,7 +82,9 @@ const CreateEmployee: React.FC = () => {
           })}
         />
         {errors.firstName && (
-          <span className='errorMessage'>{errors.firstName.message}</span>
+          <span className='create-employee__error-message'>
+            {errors.firstName.message}
+          </span>
         )}
 
         <label htmlFor='lastName'>Last Name</label>
@@ -100,11 +102,13 @@ const CreateEmployee: React.FC = () => {
           })}
         />
         {errors.lastName && (
-          <span className='errorMessage'>{errors.lastName.message}</span>
+          <span className='create-employee__error-message'>
+            {errors.lastName.message}
+          </span>
         )}
 
         <label htmlFor='dateOfBirth'>Date of Birth</label>
-        <div className='card flex justify-content-center'>
+        <div className='create-employee__card flex justify-content-center'>
           <Calendar
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.value as Date)}
@@ -114,7 +118,7 @@ const CreateEmployee: React.FC = () => {
         </div>
 
         <label htmlFor='startDate'>Start Date</label>
-        <div className='card flex justify-content-center'>
+        <div className='create-employee__card flex justify-content-center'>
           <Calendar
             value={startDate}
             onChange={(e) => setStartDate(e.value as Date)}
@@ -123,10 +127,10 @@ const CreateEmployee: React.FC = () => {
           {errors.startDate && <span>{`Start Date is required`}</span>}
         </div>
 
-        <fieldset className='address'>
+        <fieldset className='create-employee__address'>
           <legend>Address</legend>
 
-          <div className='card flex justify-content-center'>
+          <div className='create-employee__card flex justify-content-center'>
             <label htmlFor='street'>Street</label>
             <input
               {...register('street', {
@@ -142,11 +146,13 @@ const CreateEmployee: React.FC = () => {
               })}
             />
             {errors.street && (
-              <span className='errorMessage'>{errors.street.message}</span>
+              <span className='create-employee__error-message'>
+                {errors.street.message}
+              </span>
             )}
           </div>
 
-          <div className='card flex justify-content-center'>
+          <div className='create-employee__card flex justify-content-center'>
             <label htmlFor='city'>City</label>
             <input
               {...register('city', {
@@ -162,22 +168,24 @@ const CreateEmployee: React.FC = () => {
               })}
             />
             {errors.city && (
-              <span className='errorMessage'>{errors.city.message}</span>
+              <span className='create-employee__error-message'>
+                {errors.city.message}
+              </span>
             )}
           </div>
 
           <label htmlFor='state'>State</label>
-          <div className='card flex justify-content-center'>
+          <div className='create-employee__card flex justify-content-center'>
             <Dropdown
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
               options={options}
               placeholder='Select a State'
-              className='w-full md:w-14rem'
+              className='create-employee__dropdown'
             />
           </div>
           <label htmlFor='zipCode'>Zip Code</label>
-          <div className='card flex justify-content-center'>
+          <div className='create-employee__card flex justify-content-center'>
             <input
               {...register('zipCode', {
                 required: 'Zip Code is required',
@@ -188,7 +196,9 @@ const CreateEmployee: React.FC = () => {
               })}
             />
             {errors.zipCode && (
-              <span className='errorMessage'>{errors.zipCode.message}</span>
+              <span className='create-employee__error-message'>
+                {errors.zipCode.message}
+              </span>
             )}
           </div>
         </fieldset>
@@ -203,10 +213,10 @@ const CreateEmployee: React.FC = () => {
           <option value='Legal'>Legal</option>
         </select>
         {errors.department && (
-          <span className='errorMessage'>{`Department is required`}</span>
+          <span className='create-employee__error-message'>{`Department is required`}</span>
         )}
 
-        <button className='button-submit-create-employee' type='submit'>
+        <button className='create-employee__button-submit' type='submit'>
           Save
         </button>
       </form>

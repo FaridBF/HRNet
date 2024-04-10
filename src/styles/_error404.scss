@@ -1,4 +1,4 @@
-.container-error404 {
+.error404__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,20 +7,20 @@
   justify-content: center;
 }
 
-.title-error404 {
+.error404__title {
   font-weight: 700;
   font-size: 5rem;
   color: var(--color-coral);
 }
 
-.description-error404 {
+.error404__description {
   font-weight: 500;
   font-size: 2.25rem;
   color: var(--color-primary);
   font-style: normal;
 }
 
-.link-home {
+.error404__link {
   display: flex;
   align-items: flex-end;
   height: 6.25rem;
@@ -29,24 +29,24 @@
   font-weight: 500;
 }
 
-.link-home:hover {
+.error404__link:hover {
   color: var(--color-black);
 }
 
-/*responsive*/
+/* Responsive */
 @media screen and (min-width: 0rem) and (max-width: 40rem) {
-  .title-error404 {
+  .error404__title {
     font-size: 12rem;
   }
-  .description-error404 {
+  .error404__description {
     font-size: 1.3rem;
     width: 60%;
     text-align: center;
   }
-  .container-error404 {
+  .error404__container {
     margin-top: 5rem;
   }
-  .link-home {
+  .error404__link {
     font-size: 1.3rem;
   }
 }

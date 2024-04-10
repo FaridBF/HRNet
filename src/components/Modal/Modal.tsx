@@ -25,16 +25,16 @@ export const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <div className='modalBackground'>
-      <div className='modalContainer'>
-        <div className='rightPart'>
-          <div className='titleRightPart'>
-            <h1 className='title-employee-created'>{title}</h1>
-            <button className='button' onClick={onClose}>
-              <img className='img-closeModal' src={src} alt='Close Modal' />
+    <div className='modal'>
+      <div className='modal__container'>
+        <div className='modal__right-part'>
+          <div className='modal__title-right-part'>
+            <h1 className='modal__title'>{title}</h1>
+            <button className='modal__close-button' onClick={onClose}>
+              <img className='modal__close-img' src={src} alt='Close Modal' />
             </button>
           </div>
-          <div className='descriptionModal'>
+          <div className='modal__description'>
             <p>{description}</p>
           </div>
         </div>

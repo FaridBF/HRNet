@@ -2,7 +2,7 @@ html {
   min-width: 18.12rem;
 }
 
-.logo {
+.home__logo {
   display: flex;
   padding: 15px 0px;
   height: 100%;
@@ -10,7 +10,15 @@ html {
   justify-content: center;
 }
 
-.link-container {
+.home__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.home__link-container {
   display: flex;
   justify-content: center;
   align-items: center;

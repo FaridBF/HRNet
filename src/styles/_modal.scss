@@ -1,4 +1,4 @@
-.modalBackground {
+.modal {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modalContainer {
+.modal__container {
   width: 30rem;
   border-radius: 0.5rem;
   background-color: var(--color-primary);
@@ -20,11 +20,11 @@
   position: relative;
 }
 
-.rightPart {
+.modal__right-part {
   width: 100%;
 }
 
-.titleRightPart {
+.modal__title-right-part {
   text-align: center;
   font-size: 0.5rem;
   padding: 0rem 1.56rem;
@@ -34,19 +34,18 @@
   justify-content: space-between;
 }
 
-.descriptionModal {
+.modal__description {
   padding: 1.56rem;
 }
 
-.title-employee-created {
+.modal__title {
   color: var(--color-secondary);
   display: flex;
   justify-content: center;
 }
 
-.button {
+.modal__close-button {
   background-color: var(--color-secondary);
-
   border: none;
   display: flex;
   align-items: center;
@@ -62,18 +61,14 @@
   position: absolute;
 }
 
-.modal-open {
-  overflow: hidden;
-}
-
-.img-closeModal {
+.modal__close-img {
   width: 100%;
 }
 
-/*Medias querries- Gestion du Responsive*/
+/* Médias queries - Gestion du Responsive */
 /* Styles pour les écrans jusqu'à 37.5rem de large */
 @media only screen and (max-width: 37.5rem) {
-  .modalContainer {
+  .modal__container {
     min-width: 12.5rem;
     width: 80%;
   }

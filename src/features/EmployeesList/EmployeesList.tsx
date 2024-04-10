@@ -115,7 +115,7 @@ function EmployeesList(): JSX.Element {
 
   const renderHeader = () => {
     return (
-      <div className='flex flex-wrap gap-2 justify-content-between align-items-center'>
+      <div className='employees-list__header flex flex-wrap gap-2 justify-content-between align-items-center'>
         <span className='p-input-icon-left'>
           <i className='pi pi-search' />
           <InputText
@@ -130,7 +130,7 @@ function EmployeesList(): JSX.Element {
 
   const cityBodyTemplate = (rowData: Customer) => {
     return (
-      <div className='flex align-items-center gap-2'>
+      <div className='employees-list__city-body flex align-items-center gap-2'>
         <span>{rowData.city?.name}</span>
       </div>
     );
@@ -140,11 +140,11 @@ function EmployeesList(): JSX.Element {
 
   return (
     <>
-      <div className='homePageLink'>
-        <h1 className='title-current-employee'>Current Employees</h1>
+      <div className='home__page-link'>
+        <h1 className='home__title-current-employee'>Current Employees</h1>
         <Link to='/'>Home</Link>
       </div>
-      <div className='card-current-employee'>
+      <div className='home__card-current-employee'>
         <DataTable
           value={customers}
           paginator

@@ -1,4 +1,4 @@
-/*Container*/
+/* Container */
 .card-current-employee {
   display: flex;
   justify-content: center;
@@ -19,7 +19,12 @@
   justify-content: flex-end;
 }
 
-.homePageLink {
+.home__card-current-employee {
+  display: flex;
+  justify-content: center;
+}
+
+.home__page-link {
   height: 6.25rem;
   display: flex;
   align-items: center;
@@ -57,10 +62,10 @@
   justify-content: center;
 }
 
-/*Medias querries- Gestion du Responsive*/
+/* Media queries - Gestion du Responsive */
 /* Styles pour les écrans jusqu'à 37.5rem de large */
 @media only screen and (max-width: 37.5rem) {
-  .homePageLink {
+  .home__page-link {
     min-width: 18.75rem;
     display: flex;
     flex-direction: column;
@@ -69,14 +74,17 @@
   .flex.flex-wrap.gap-2.justify-content-between.align-items-center {
     min-width: 17.81rem;
   }
+
   .p-datatable.p-component.p-datatable-selectable.p-datatable-responsive-scroll {
     min-width: 19.37rem;
   }
+
   .p-paginator-bottom.p-paginator.p-component {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
   }
+
   span.p-paginator-current {
     position: absolute;
     bottom: 0;

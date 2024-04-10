@@ -15,13 +15,13 @@ interface Error404Props {}
 const Error404: FunctionComponent<Error404Props> = (props) => {
   return (
     <>
-      <div className='container-error404'>
-        <h1 className='title-error404'>Error 404</h1>
-        <h2 className='description-error404'>
+      <div className='error404__container'>
+        <h1 className='error404__title'>Error 404</h1>
+        <h2 className='error404__description'>
           Sorry! This page does not exist.
         </h2>
 
-        <Link className='link-home' to={'/'}>
+        <Link className='error404__link' to={'/'}>
           Back to home
         </Link>
       </div>
