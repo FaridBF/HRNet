@@ -26,6 +26,10 @@ interface StateOption {
   value: string;
 }
 
+/**
+ * Représente un formulaire pour créer un nouvel employé.
+ * @returns {JSX.Element} La représentation JSX du formulaire de création d'employé.
+ */
 const CreateEmployee: React.FC = () => {
   const { setFormData } = useFormData();
 
@@ -46,6 +50,10 @@ const CreateEmployee: React.FC = () => {
     formState: { errors }
   } = useForm<FormInput>();
 
+  /**
+   * Gère la soumission du formulaire.
+   * @param {FormInput} data - Les données du formulaire.
+   */
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     const formDataWithState = {
       ...data,
@@ -67,6 +75,7 @@ const CreateEmployee: React.FC = () => {
       <h2 className='create-employee__title'>Create Employee</h2>
 
       <form id='create-employee' onSubmit={handleSubmit(onSubmit)}>
+        {/* First Name */}
         <label htmlFor='firstName'>First Name</label>
         <input
           {...register('firstName', {
@@ -87,6 +96,7 @@ const CreateEmployee: React.FC = () => {
           </span>
         )}
 
+        {/* Last Name */}
         <label htmlFor='lastName'>Last Name</label>
         <input
           {...register('lastName', {
@@ -107,6 +117,7 @@ const CreateEmployee: React.FC = () => {
           </span>
         )}
 
+        {/* Date of Birth */}
         <label htmlFor='dateOfBirth'>Date of Birth</label>
         <div className='create-employee__card flex justify-content-center'>
           <Calendar
@@ -117,6 +128,7 @@ const CreateEmployee: React.FC = () => {
           {errors.dateOfBirth && <span>{`Date of Birth is required`}</span>}
         </div>
 
+        {/* Start Date */}
         <label htmlFor='startDate'>Start Date</label>
         <div className='create-employee__card flex justify-content-center'>
           <Calendar
@@ -129,7 +141,7 @@ const CreateEmployee: React.FC = () => {
 
         <fieldset className='create-employee__address'>
           <legend>Address</legend>
-
+          {/* Street */}
           <div className='create-employee__card flex justify-content-center'>
             <label htmlFor='street'>Street</label>
             <input
@@ -152,6 +164,7 @@ const CreateEmployee: React.FC = () => {
             )}
           </div>
 
+          {/* City */}
           <div className='create-employee__card flex justify-content-center'>
             <label htmlFor='city'>City</label>
             <input
@@ -174,6 +187,7 @@ const CreateEmployee: React.FC = () => {
             )}
           </div>
 
+          {/* State */}
           <label htmlFor='state'>State</label>
           <div className='create-employee__card flex justify-content-center'>
             <Dropdown
@@ -184,6 +198,8 @@ const CreateEmployee: React.FC = () => {
               className='create-employee__dropdown'
             />
           </div>
+
+          {/* Zip Code */}
           <label htmlFor='zipCode'>Zip Code</label>
           <div className='create-employee__card flex justify-content-center'>
             <input
@@ -203,6 +219,7 @@ const CreateEmployee: React.FC = () => {
           </div>
         </fieldset>
 
+        {/* Department */}
         <label htmlFor='department'>Department</label>
         <select {...register('department', { required: true })}>
           <option value=''>Select a department</option>
