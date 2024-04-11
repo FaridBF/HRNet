@@ -115,13 +115,18 @@ function EmployeesList(): JSX.Element {
 
   const renderHeader = () => {
     return (
-      <div className='employees-list__header flex flex-wrap gap-2 justify-content-between align-items-center'>
+      <div
+        className='employees-list__header flex flex-wrap gap-2 justify-content-between align-items-center'
+        role='search'
+        aria-label='Employee search'
+      >
         <span className='p-input-icon-left'>
-          <i className='pi pi-search' />
+          <i className='pi pi-search' aria-hidden='true' />
           <InputText
             value={globalFilterValue}
             onChange={onGlobalFilterChange}
             placeholder='Keyword Search'
+            aria-label='Enter keywords to search employees'
           />
         </span>
       </div>
@@ -140,11 +145,17 @@ function EmployeesList(): JSX.Element {
 
   return (
     <>
-      <div className='home__page-link'>
+      <div className='home__page-link' aria-label='Current Employees Page'>
         <h1 className='home__title-current-employee'>Current Employees</h1>
-        <Link to='/'>Home</Link>
+        <Link to='/' aria-label='Link to Home'>
+          Home
+        </Link>
       </div>
-      <div className='home__card-current-employee'>
+      <div
+        className='home__card-current-employee'
+        aria-label='Employee Data Table'
+        role='region'
+      >
         <DataTable
           value={customers}
           paginator
@@ -173,42 +184,47 @@ function EmployeesList(): JSX.Element {
           emptyMessage='No customers found.'
           currentPageReportTemplate='Showing {first} to {last} of {totalRecords} entries'
         >
-          <Column headerStyle={{ width: '3rem' }}></Column>
           <Column
             field='firstname'
             header='Firstname'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='First Name'
           />
           <Column
             field='name'
             header='Name'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='Last Name'
           />
           <Column
             field='startdate'
             header='Start Date'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='Start Date'
           />
           <Column
             field='department'
             header='Department'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='Department'
           />
           <Column
             field='date'
             header='Date'
             sortable
             style={{ minWidth: '10rem' }}
+            aria-label='Date'
           />
           <Column
             field='street'
             header='Street'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='Street'
           />
           <Column
             field='city.name'
@@ -217,18 +233,21 @@ function EmployeesList(): JSX.Element {
             filterField='city.name'
             style={{ minWidth: '10rem' }}
             body={cityBodyTemplate}
+            aria-label='City'
           />
           <Column
             field='state'
             header='State'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='State'
           />
           <Column
             field='zipcode'
             header='ZipCode'
             sortable
             style={{ minWidth: '8rem' }}
+            aria-label='Zip Code'
           />
         </DataTable>
       </div>

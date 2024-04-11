@@ -72,12 +72,14 @@ const CreateEmployee: React.FC = () => {
 
   return (
     <>
-      <h2 className='create-employee__title'>Create Employee</h2>
-
+      <h1 className='create-employee__title' aria-label='Create Employee'>
+        Create Employee
+      </h1>
       <form id='create-employee' onSubmit={handleSubmit(onSubmit)}>
         {/* First Name */}
         <label htmlFor='firstName'>First Name</label>
         <input
+          id='firstName'
           {...register('firstName', {
             required: 'First Name is required',
             minLength: {
@@ -91,7 +93,11 @@ const CreateEmployee: React.FC = () => {
           })}
         />
         {errors.firstName && (
-          <span className='create-employee__error-message'>
+          <span
+            role='alert'
+            aria-live='assertive'
+            className='create-employee__error-message'
+          >
             {errors.firstName.message}
           </span>
         )}
@@ -99,6 +105,7 @@ const CreateEmployee: React.FC = () => {
         {/* Last Name */}
         <label htmlFor='lastName'>Last Name</label>
         <input
+          id='lastName'
           {...register('lastName', {
             required: 'Last Name is required',
             minLength: {
@@ -112,7 +119,11 @@ const CreateEmployee: React.FC = () => {
           })}
         />
         {errors.lastName && (
-          <span className='create-employee__error-message'>
+          <span
+            role='alert'
+            aria-live='assertive'
+            className='create-employee__error-message'
+          >
             {errors.lastName.message}
           </span>
         )}
@@ -121,22 +132,35 @@ const CreateEmployee: React.FC = () => {
         <label htmlFor='dateOfBirth'>Date of Birth</label>
         <div className='create-employee__card flex justify-content-center'>
           <Calendar
+            inputId='dateOfBirth'
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.value as Date)}
             dateFormat='dd/mm/yy'
+            aria-label='Select date of birth'
           />
-          {errors.dateOfBirth && <span>{`Date of Birth is required`}</span>}
+          {errors.dateOfBirth && (
+            <span role='alert' aria-live='assertive'>
+              {`Date of Birth is required`}
+            </span>
+          )}
         </div>
 
         {/* Start Date */}
         <label htmlFor='startDate'>Start Date</label>
         <div className='create-employee__card flex justify-content-center'>
           <Calendar
+            inputId='startDate'
             value={startDate}
             onChange={(e) => setStartDate(e.value as Date)}
             dateFormat='dd/mm/yy'
+            aria-label='Select start Date'
           />
-          {errors.startDate && <span>{`Start Date is required`}</span>}
+          {errors.startDate && (
+            <span
+              role='alert'
+              aria-live='assertive'
+            >{`Start Date is required`}</span>
+          )}
         </div>
 
         <fieldset className='create-employee__address'>
@@ -145,6 +169,7 @@ const CreateEmployee: React.FC = () => {
           <div className='create-employee__card flex justify-content-center'>
             <label htmlFor='street'>Street</label>
             <input
+              id='street'
               {...register('street', {
                 required: 'Street is required',
                 minLength: {
@@ -158,7 +183,11 @@ const CreateEmployee: React.FC = () => {
               })}
             />
             {errors.street && (
-              <span className='create-employee__error-message'>
+              <span
+                role='alert'
+                aria-live='assertive'
+                className='create-employee__error-message'
+              >
                 {errors.street.message}
               </span>
             )}
@@ -168,6 +197,7 @@ const CreateEmployee: React.FC = () => {
           <div className='create-employee__card flex justify-content-center'>
             <label htmlFor='city'>City</label>
             <input
+              id='city'
               {...register('city', {
                 required: 'City is required',
                 minLength: {
@@ -181,7 +211,11 @@ const CreateEmployee: React.FC = () => {
               })}
             />
             {errors.city && (
-              <span className='create-employee__error-message'>
+              <span
+                role='alert'
+                aria-live='assertive'
+                className='create-employee__error-message'
+              >
                 {errors.city.message}
               </span>
             )}
@@ -191,11 +225,14 @@ const CreateEmployee: React.FC = () => {
           <label htmlFor='state'>State</label>
           <div className='create-employee__card flex justify-content-center'>
             <Dropdown
+              inputId='state'
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
               options={options}
               placeholder='Select a State'
               className='create-employee__dropdown'
+              aria-label='Options'
+              aria-controls='dropdown-list'
             />
           </div>
 
@@ -203,6 +240,7 @@ const CreateEmployee: React.FC = () => {
           <label htmlFor='zipCode'>Zip Code</label>
           <div className='create-employee__card flex justify-content-center'>
             <input
+              id='zipCode'
               {...register('zipCode', {
                 required: 'Zip Code is required',
                 pattern: {
@@ -212,7 +250,11 @@ const CreateEmployee: React.FC = () => {
               })}
             />
             {errors.zipCode && (
-              <span className='create-employee__error-message'>
+              <span
+                role='alert'
+                aria-live='assertive'
+                className='create-employee__error-message'
+              >
                 {errors.zipCode.message}
               </span>
             )}
@@ -221,7 +263,7 @@ const CreateEmployee: React.FC = () => {
 
         {/* Department */}
         <label htmlFor='department'>Department</label>
-        <select {...register('department', { required: true })}>
+        <select id='department' {...register('department', { required: true })}>
           <option value=''>Select a department</option>
           <option value='Sales'>Sales</option>
           <option value='Marketing'>Marketing</option>
@@ -230,7 +272,11 @@ const CreateEmployee: React.FC = () => {
           <option value='Legal'>Legal</option>
         </select>
         {errors.department && (
-          <span className='create-employee__error-message'>{`Department is required`}</span>
+          <span
+            role='alert'
+            aria-live='assertive'
+            className='create-employee__error-message'
+          >{`Department is required`}</span>
         )}
 
         <button className='create-employee__button-submit' type='submit'>
