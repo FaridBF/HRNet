@@ -28,9 +28,8 @@ const App = () => (
 );
 
 const rootElement = document.getElementById('root');
-if (rootElement !== null) {
-  const root = createRoot(rootElement);
-  root.render(
+if (rootElement) {
+  createRoot(rootElement).render(
     <React.StrictMode>
       <BrowserRouter>
         <App />
