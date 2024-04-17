@@ -127,6 +127,7 @@ function EmployeesList(): JSX.Element {
             onChange={onGlobalFilterChange}
             placeholder='Keyword Search'
             aria-label='Enter keywords to search employees'
+            data-cy='global-filter-input'
           />
         </span>
       </div>
@@ -147,7 +148,7 @@ function EmployeesList(): JSX.Element {
     <>
       <div className='home__page-link' aria-label='Current Employees Page'>
         <h1 className='home__title-current-employee'>Current Employees</h1>
-        <Link to='/' aria-label='Link to Home'>
+        <Link to='/' aria-label='Link to Home' data-cy='home-link'>
           Home
         </Link>
       </div>
@@ -155,6 +156,7 @@ function EmployeesList(): JSX.Element {
         className='home__card-current-employee'
         aria-label='Employee Data Table'
         role='region'
+        data-cy='employee-data-table'
       >
         <DataTable
           value={customers}
