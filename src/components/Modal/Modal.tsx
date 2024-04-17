@@ -15,9 +15,9 @@ interface ModalProps {
  */
 export const Modal: React.FC<ModalProps> = ({
   isVisible,
-  title,
-  description,
-  src,
+  title = 'Default Title',
+  description = 'Default description.',
+  src = '../../assets/defaultImageCloseModal.png',
   onClose
 }) => {
   if (!isVisible) {
@@ -25,16 +25,22 @@ export const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <div className='modal'>
+    <div className='modal' data-cy='modal'>
       <div className='modal__container'>
         <div className='modal__right-part'>
           <div className='modal__title-right-part'>
-            <h1 className='modal__title'>{title}</h1>
-            <button className='modal__close-button' onClick={onClose}>
+            <h1 className='modal__title' data-cy='modal-title'>
+              {title}
+            </h1>
+            <button
+              className='modal__close-button'
+              onClick={onClose}
+              data-cy='close-button'
+            >
               <img className='modal__close-img' src={src} alt='Close Modal' />
             </button>
           </div>
-          <div className='modal__description'>
+          <div className='modal__description' data-cy='modal-description'>
             <p>{description}</p>
           </div>
         </div>
