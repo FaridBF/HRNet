@@ -18,14 +18,16 @@ interface HomeProps {}
 const Home: FunctionComponent<HomeProps> = (props) => {
   return (
     <>
-      <div className='home__logo'>
+      <div className='home__logo' data-cy='home-logo'>
         <img src={logo} alt='Close Modal' />
       </div>
-      <div className='home__container'>
+      <div className='home__container' data-cy='create-employee'>
         <CreateEmployee />
       </div>
       <div className='home__link-container'>
-        <Link to='/employees'>View Current Employees</Link>
+        <Link to='/employees' data-cy='view-employees-link'>
+          View Current Employees
+        </Link>
       </div>
     </>
   );
