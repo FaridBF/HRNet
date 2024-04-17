@@ -80,6 +80,7 @@ const CreateEmployee: React.FC = () => {
         <label htmlFor='firstName'>First Name</label>
         <input
           id='firstName'
+          data-cy='first-name-input'
           {...register('firstName', {
             required: 'First Name is required',
             minLength: {
@@ -106,6 +107,7 @@ const CreateEmployee: React.FC = () => {
         <label htmlFor='lastName'>Last Name</label>
         <input
           id='lastName'
+          data-cy='last-name-input'
           {...register('lastName', {
             required: 'Last Name is required',
             minLength: {
@@ -137,6 +139,7 @@ const CreateEmployee: React.FC = () => {
             onChange={(e) => setDateOfBirth(e.value as Date)}
             dateFormat='dd/mm/yy'
             aria-label='Select date of birth'
+            data-cy='date-of-birth-calendar'
           />
           {errors.dateOfBirth && (
             <span role='alert' aria-live='assertive'>
@@ -154,6 +157,7 @@ const CreateEmployee: React.FC = () => {
             onChange={(e) => setStartDate(e.value as Date)}
             dateFormat='dd/mm/yy'
             aria-label='Select start Date'
+            data-cy='start-date-calendar'
           />
           {errors.startDate && (
             <span
@@ -170,6 +174,7 @@ const CreateEmployee: React.FC = () => {
             <label htmlFor='street'>Street</label>
             <input
               id='street'
+              data-cy='street-input'
               {...register('street', {
                 required: 'Street is required',
                 minLength: {
@@ -198,6 +203,7 @@ const CreateEmployee: React.FC = () => {
             <label htmlFor='city'>City</label>
             <input
               id='city'
+              data-cy='city-input'
               {...register('city', {
                 required: 'City is required',
                 minLength: {
@@ -233,6 +239,7 @@ const CreateEmployee: React.FC = () => {
               className='create-employee__dropdown'
               aria-label='Options'
               aria-controls='dropdown-list'
+              data-cy='state-dropdown'
             />
           </div>
 
@@ -241,6 +248,7 @@ const CreateEmployee: React.FC = () => {
           <div className='create-employee__card flex justify-content-center'>
             <input
               id='zipCode'
+              data-cy='zip-code-input'
               {...register('zipCode', {
                 required: 'Zip Code is required',
                 pattern: {
@@ -263,7 +271,11 @@ const CreateEmployee: React.FC = () => {
 
         {/* Department */}
         <label htmlFor='department'>Department</label>
-        <select id='department' {...register('department', { required: true })}>
+        <select
+          id='department'
+          {...register('department', { required: true })}
+          data-cy='department-select'
+        >
           <option value=''>Select a department</option>
           <option value='Sales'>Sales</option>
           <option value='Marketing'>Marketing</option>
@@ -279,7 +291,11 @@ const CreateEmployee: React.FC = () => {
           >{`Department is required`}</span>
         )}
 
-        <button className='create-employee__button-submit' type='submit'>
+        <button
+          className='create-employee__button-submit'
+          type='submit'
+          data-cy='submit-button'
+        >
           Save
         </button>
       </form>
