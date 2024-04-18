@@ -37,6 +37,7 @@ npm start
 - [Sass](https://sass-lang.com/) enhances CSS with features like variables, nesting, and mixins for easier stylesheet creation.
 - [PrimeReact](https://primereact.org/) is a React component library that aims to simplify modern web application development by providing ready-to-use, responsive, and customizable tools for building engaging, high-performance user interfaces.
 - [TypeScript](https://www.typescriptlang.org/) is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
+- [Cypress](https://www.cypress.io/) it's a tool can easily create tests for your modern web applications, debug them visually, and automatically run them in continuous integration builds.
 
 ## Additional tools used to create this project:
 
