@@ -4,8 +4,8 @@ import Modal from './Modal';
 
 import '../../index.scss';
 
-const defaultImageCloseModal = require('../../assets/defaultImageCloseModal.png');
-const closeButtonImg = require('../../assets/closeButton.png');
+const defaultImageCloseModal = require('../../assets/icons/defaultImageCloseModal.png');
+const closeButtonImg = require('../../assets/icons/closeButton.png');
 
 // Composant temporaire intermédiaire pour tester
 function TestComponent({

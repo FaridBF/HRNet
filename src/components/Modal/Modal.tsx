@@ -17,7 +17,8 @@ export const Modal: React.FC<ModalProps> = ({
   isVisible,
   title = 'Default Title',
   description = 'Default description.',
-  src = '../../assets/defaultImageCloseModal.png',
+  src = '../../assets/icons/defaultImageCloseModal.png',
+
   onClose
 }) => {
   if (!isVisible) {

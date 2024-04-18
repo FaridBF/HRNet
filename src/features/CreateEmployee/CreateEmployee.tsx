@@ -7,7 +7,7 @@ import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
 import { format } from '../../utils/Format';
 import { useFormData } from '../../context/CreateEmployeeFormContext';
 
-const closeButtonImg = require('../../assets/closeButton.png');
+const closeButtonImg = require('../../assets/icons/closeButton.png');
 
 interface FormInput {
   firstName: string;

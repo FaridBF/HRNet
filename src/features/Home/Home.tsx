@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CreateEmployee from '../CreateEmployee/CreateEmployee';
 
-const logo = require('../../assets/logo.jpg');
+const logo = require('../../assets/images/logos/logo.jpg');
 
 /**
  * Propriétés du composant Home.
