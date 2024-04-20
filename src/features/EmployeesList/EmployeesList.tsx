@@ -6,7 +6,7 @@ import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import 'primereact/resources/themes/saga-blue/theme.css';
 
-import { CustomerService } from '../../service/CustomerService';
+import { CustomerService } from '../../service/CustomerService.min';
 
 import { useFormData } from '../../context/CreateEmployeeFormContext';
 import { format } from '../../utils/Format';

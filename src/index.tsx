@@ -5,12 +5,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import EmployeesList from './features/EmployeesList/EmployeesList';
-import Error404 from './features/Error404/Error404';
-import Home from './features/Home/Home';
+import Error404 from './features/Error404/Error404.min';
+import Home from './features/Home/Home.min';
 
 import { CreateEmployeeProvider } from './context/CreateEmployeeFormContext';
 
-import './index.scss';
+import './index.min.scss';
 
 library.add(faXmark);
 

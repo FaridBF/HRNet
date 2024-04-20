@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import CreateEmployee from '../CreateEmployee/CreateEmployee';
+import CreateEmployee from '../CreateEmployee/CreateEmployee.min.tsx';
 
-const logo = require('../../assets/images/logos/logo.jpg');
+// const logo = require('../../assets/images/logos/logo.jpg');
 
 /**
  * Propriétés du composant Home.
@@ -18,9 +18,9 @@ interface HomeProps {}
 const Home: FunctionComponent<HomeProps> = (props) => {
   return (
     <>
-      <div className='home__logo' data-cy='home-logo'>
+      {/* <div className='home__logo' data-cy='home-logo'>
         <img src={logo} alt='Close Modal' />
-      </div>
+      </div> */}
       <div className='home__container' data-cy='create-employee'>
         <CreateEmployee />
       </div>

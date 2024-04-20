@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
-import Modal from '../../components/Modal/Modal';
-import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican';
+
+import Modal from '../../components/Modal/Modal.min';
+import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican.min';
 import { format } from '../../utils/Format';
 import { useFormData } from '../../context/CreateEmployeeFormContext';
 
