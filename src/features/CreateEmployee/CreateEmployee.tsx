@@ -239,7 +239,6 @@ const CreateEmployee: React.FC = () => {
               placeholder='Select a State'
               className='create-employee__dropdown'
               aria-label='Options'
-              aria-controls='dropdown-list'
               data-cy='state-dropdown'
             />
           </div>
