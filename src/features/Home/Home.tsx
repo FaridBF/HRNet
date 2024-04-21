@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import CreateEmployee from '../CreateEmployee/CreateEmployee.min.tsx';
+import CreateEmployee from '../CreateEmployee/CreateEmployee';
 
 // const logo = require('../../assets/images/logos/logo.jpg');
 
