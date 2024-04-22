@@ -1,0 +1,1 @@
+export const ListOfDepartment={getData(){return[{name:'Sales'},{name:'Marketing'},{name:'Engineering'},{name:'Human Resources'},{name:'Legal'}]}}

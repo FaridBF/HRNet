@@ -4,9 +4,16 @@ import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 
 import Modal from '../../components/Modal/Modal.min';
+
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican.min';
+import { ListOfDepartment } from '../../service/ListOfDepartment';
 import { format } from '../../utils/Format';
 import { useFormData } from '../../context/CreateEmployeeFormContext';
+
+// const { Modal } = require('fb-modal-component-library/dist/Modal.js');
+// import { Modal } from 'fb-modal-component-library';
+// import Modal from 'fb-modal-component-library/dist/Modal.js';
+// import { Modal } from 'fb-modal-component-library/dist/Modal.js';
 
 const closeButtonImg = require('../../assets/icons/closeButton.png');
 
@@ -22,7 +29,12 @@ interface FormInput {
   zipCode: string;
 }
 
-interface StateOption {
+interface StateOptions {
+  label: string;
+  value: string;
+}
+
+interface DepartmentOptions {
   label: string;
   value: string;
 }
@@ -38,12 +50,21 @@ const CreateEmployee: React.FC = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
   const [selectedState, setSelectedState] = useState<string>('');
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('');
 
   const data = ListOfStatesAmerican.getData();
-  const options: StateOption[] = data.map(({ name }) => ({
+  const stateOptions: StateOptions[] = data.map(({ name }) => ({
     label: name,
     value: name
   }));
+
+  const dataDepartment = ListOfDepartment.getData();
+  const departmentOptions: DepartmentOptions[] = dataDepartment.map(
+    ({ name }) => ({
+      label: name,
+      value: name
+    })
+  );
 
   const {
     register,
@@ -235,9 +256,9 @@ const CreateEmployee: React.FC = () => {
               inputId='state'
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
-              options={options}
+              options={stateOptions}
               placeholder='Select a State'
-              className='create-employee__dropdown'
+              className='create-employee__stateOptions'
               aria-label='Options'
               data-cy='state-dropdown'
             />
@@ -271,18 +292,17 @@ const CreateEmployee: React.FC = () => {
 
         {/* Department */}
         <label htmlFor='department'>Department</label>
-        <select
-          id='department'
+        <Dropdown
+          inputId='department'
           {...register('department', { required: true })}
           data-cy='department-select'
-        >
-          <option value=''>Select a department</option>
-          <option value='Sales'>Sales</option>
-          <option value='Marketing'>Marketing</option>
-          <option value='Engineering'>Engineering</option>
-          <option value='Human Resources'>Human Resources</option>
-          <option value='Legal'>Legal</option>
-        </select>
+          value={selectedDepartment}
+          onChange={(e) => setSelectedDepartment(e.target.value)}
+          options={departmentOptions}
+          placeholder='Select a Department'
+          aria-label='department'
+          className='create-employee__departmentOptions'
+        />
         {errors.department && (
           <span
             role='alert'
@@ -290,7 +310,6 @@ const CreateEmployee: React.FC = () => {
             className='create-employee__error-message'
           >{`Department is required`}</span>
         )}
-
         <button
           className='create-employee__button-submit'
           type='submit'
@@ -300,10 +319,10 @@ const CreateEmployee: React.FC = () => {
         </button>
       </form>
       <Modal
+        isVisible={modalOpen}
         title='Employee created'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus elit libero, at finibus dolor auctor id. Aliquam ut lectus vitae odio tincidunt blandit. Vivamus cursus, lorem ut congue rutrum, lectus eros tristique lectus, vitae imperdiet massa purus a orci. Donec nibh'
         src={closeButtonImg}
-        isVisible={modalOpen}
         onClose={handleCloseModal}
       />
     </>
