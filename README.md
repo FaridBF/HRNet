@@ -69,9 +69,9 @@ Illustration visuelle de la prise en compte du responsive pour le <span style="c
 
 ## Rapport LightHouse de l'interface "HRNet"
 
-Cliquer [ici](https://github.com/FaridBF/HRNet/blob/main/docs/lighthouse/lightHouseBeforeAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
+Cliquer [ici](https://github.com/FaridBF/HRNet/blob/main/docs/lightHouse/lightHouseBeforeAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
 
-Cliquer [ici](https://github.com/FaridBF/HRNet/blob/main/docs/lighthouse/lightHouseAfterAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
+Cliquer [ici](https://github.com/FaridBF/HRNet/blob/main/docs/lightHouse/lightHouseAfterAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
 
 <img src ="./src/assets/illustrationReadMe/IllustrationLightHouse.png" title = "LightHouse" alt = "LightHouse" />
 
