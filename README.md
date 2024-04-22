@@ -2,27 +2,27 @@
 
 ## Installation
 
-1. To clone the Front-end project repo and be able to add your code, please enter the following command:
+<span style="color:  #ADD8E6">1. To clone the Front-end project repo and be able to add your code, please enter the following command:</span>
 
 ```
 git clone https://github.com/FaridBF/HRNet
 ```
 
-2. Check the prerequisites
+<span style="color:  #ADD8E6">2. Check the prerequisites</span>
 
 ```
 node -v
 ```
 
-You are need this version v20.10.0 for this project
+You are need this version <span style="color: #FF0000"> v20.10.0</span> for this project
 
-3. Install all dependencies with the following command:
+<span style="color:  #ADD8E6">3. Install all dependencies with the following command:</span>
 
 ```
 npm install
 ```
 
-4. Launch the project with the following command:
+<span style="color:  #ADD8E6">4. Launch the project with the following command:
 
 ```
 npm start
@@ -55,14 +55,28 @@ npm start
 
 ## Illustrations visuelles de l'interface "HRNet"
 
-Illustration visuelle de la page "Create Employee"
+Illustration visuelle de la page <span style="color:  #26B260">**"Create Employee"**</span>
 
-<!-- <img src ="./assets/illustrationReadMe/" title = "HRNet" alt = "HRNet" /> -->
+<img src ="./src/assets/illustrationReadMe/IllustrationCreateEmployee.png" title = "Create Employee" alt = "Create Employee" />
 
-Illustration visuelle de la page "Employee List"
+Illustration visuelle de la page <span style="color:  #26B260">**"Employee List"**</span>
 
-<!-- <img src ="./assets/illustrationReadMe/" title = "HRNet" alt = "HRNet" /> -->
+<img src ="./src/assets/illustrationReadMe/IllustrationEmployeeList.png" title = "Employee List" alt = "Employee List" />
 
-Illustration visuelle de la prise en compte du responsive
+Illustration visuelle de la prise en compte du responsive pour le <span style="color:  #26B260">**"Create Employee"**</span>
 
-<!-- <img src ="./assets/illustrationReadMe/" title = "HRNet" alt = "HRNet" /> -->
+<img src ="./src/assets/illustrationReadMe/IllustrationResponsiveCreateEmployee.png" title = "Responsive Create Employee" alt = "Responsive Create Employee" />
+
+## Rapport LightHouse de l'interface "HRNet"
+
+Cliquer [ici](https://github.com/FaridBF/HRNet/raw/main/docs/lighthouse/lightHouseBeforeAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
+
+Cliquer [ici](https://github.com/FaridBF/HRNet/raw/main/docs/lighthouse/lightHouseAfterAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
+
+<img src ="./src/assets/illustrationReadMe/IllustrationLightHouse.png" title = "LightHouse" alt = "LightHouse" />
+
+## Rapport de Wave concernant la prise en compte de l'accessibilité "HRNet"
+
+<img src ="./src/assets/illustrationReadMe/IllustrationWavePageCreateEmployee.png" title = "Illustration Wave Page CreateEmployee" alt = "Illustration Wave Page CreateEmployee" />
+
+<img src ="./src/assets/illustrationReadMe/IllustrationWavePageEmployeeList.png" title = "Illustration Wave Page Employee List" alt = "Illustration Wave Page EmployeeList" />
