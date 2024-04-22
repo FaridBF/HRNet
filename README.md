@@ -53,29 +53,29 @@ npm start
 - [BEM](https://getbem.com/) is a methodology that helps you to create reusable components and code sharing in front‑end development
 - [Novel Tools](https://www.novel.tools/minify) it allows to Minify the JS/CSS/JSON etc, and help the site load faster and improve the search rankings.
 
-## Illustrations visuelles de l'interface "HRNet"
+## Visual illustrations of the “HRNet” interface
 
-Illustration visuelle de la page <span style="color:  #26B260">**"Create Employee"**</span>
+Visual illustration of the page Create Employee <span style="color:  #26B260">**"Create Employee"**</span>
 
 <img src ="./src/assets/illustrationReadMe/IllustrationCreateEmployee.png" title = "Create Employee" alt = "Create Employee" />
 
-Illustration visuelle de la page <span style="color:  #26B260">**"Employee List"**</span>
+Visual illustration of the page Employee List <span style="color:  #26B260">**"Employee List"**</span>
 
 <img src ="./src/assets/illustrationReadMe/IllustrationEmployeeList.png" title = "Employee List" alt = "Employee List" />
 
-Illustration visuelle de la prise en compte du responsive pour le <span style="color:  #26B260">**"Create Employee"**</span>
+Visual illustration of responsiveness consideration for the Create Employee page <span style="color:  #26B260">**"Create Employee"**</span>
 
 <img src ="./src/assets/illustrationReadMe/IllustrationResponsiveCreateEmployee.png" title = "Responsive Create Employee" alt = "Responsive Create Employee" />
 
-## Rapport LightHouse de l'interface "HRNet"
+## LightHouse report from the “HRNet” interface
 
-Cliquer [ici](https://github.com/FaridBF/HRNet/blob/main/docs/lightHouse/lightHouseBeforeAnalyze.pdf) afin d'obtenir le rapport avant l'analyse du site au format PDF.
+Click [here](https://github.com/FaridBF/HRNet/blob/main/docs/lightHouse/lightHouseBeforeAnalyze.pdf) to obtain the report before the site analysis in PDF format.
 
-Cliquer [ici](https://github.com/FaridBF/HRNet/blob/main/docs/lightHouse/lightHouseAfterAnalyze.pdf) afin d'obtenir le rapport après l'analyse du site au format PDF.
+Click [here](https://github.com/FaridBF/HRNet/blob/main/docs/lightHouse/lightHouseAfterAnalyze.pdf) to obtain the report after the site analysis in PDF format.
 
 <img src ="./src/assets/illustrationReadMe/IllustrationLightHouse.png" title = "LightHouse" alt = "LightHouse" />
 
-## Rapport de Wave concernant la prise en compte de l'accessibilité "HRNet"
+## Wave report regarding the consideration of “HRNet” accessibility
 
 <img src ="./src/assets/illustrationReadMe/IllustrationWavePageCreateEmployee.png" title = "Illustration Wave Page CreateEmployee" alt = "Illustration Wave Page CreateEmployee" />
 
