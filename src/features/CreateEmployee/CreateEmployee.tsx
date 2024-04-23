@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 
-import Modal from '../../components/Modal/Modal.min';
+import Modal from '../../components/Modal/Modal';
 
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican.min';
 import { ListOfDepartment } from '../../service/ListOfDepartment';
