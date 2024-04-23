@@ -1,6 +1,7 @@
 import React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from 'cypress/react18';
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import EmployeesList from './EmployeesList';
 import { CreateEmployeeProvider } from '../../context/CreateEmployeeFormContext';
 

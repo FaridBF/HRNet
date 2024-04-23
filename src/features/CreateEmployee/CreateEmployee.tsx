@@ -320,7 +320,7 @@ const CreateEmployee: React.FC = () => {
       </form>
       <Modal
         isVisible={modalOpen}
-        title='Employee created'
+        title='Personalized Title'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus elit libero, at finibus dolor auctor id. Aliquam ut lectus vitae odio tincidunt blandit. Vivamus cursus, lorem ut congue rutrum, lectus eros tristique lectus, vitae imperdiet massa purus a orci. Donec nibh'
         src={closeButtonImg}
         onClose={handleCloseModal}

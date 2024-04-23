@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { mount } from '@cypress/react';
+import { mount } from 'cypress/react18';
 import Modal from './Modal';
 
 import '../../index.scss';
