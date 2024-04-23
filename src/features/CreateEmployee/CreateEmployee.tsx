@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 
@@ -9,11 +10,6 @@ import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican.min';
 import { ListOfDepartment } from '../../service/ListOfDepartment';
 import { format } from '../../utils/Format';
 import { useFormData } from '../../context/CreateEmployeeFormContext';
-
-// const { Modal } = require('fb-modal-component-library/dist/Modal.js');
-// import { Modal } from 'fb-modal-component-library';
-// import Modal from 'fb-modal-component-library/dist/Modal.js';
-// import { Modal } from 'fb-modal-component-library/dist/Modal.js';
 
 const closeButtonImg = require('../../assets/icons/closeButton.png');
 
@@ -45,12 +41,16 @@ interface DepartmentOptions {
  */
 const CreateEmployee: React.FC = () => {
   const { setFormData } = useFormData();
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormInput>();
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
-  const [selectedState, setSelectedState] = useState<string>('');
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('');
 
   const data = ListOfStatesAmerican.getData();
   const stateOptions: StateOptions[] = data.map(({ name }) => ({
@@ -66,25 +66,19 @@ const CreateEmployee: React.FC = () => {
     })
   );
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormInput>();
-
   /**
    * Gère la soumission du formulaire.
    * @param {FormInput} data - Les données du formulaire.
    */
-  const onSubmit: SubmitHandler<FormInput> = (data) => {
-    const formDataWithState = {
+  const onSubmit = (data: FormInput) => {
+    const formattedData = {
       ...data,
-      state: selectedState,
-      startDate: format(startDate),
-      dateOfBirth: format(dateOfBirth)
+      startDate: format(data.startDate),
+      dateOfBirth: format(data.dateOfBirth)
     };
-    setFormData(formDataWithState);
-    console.log('formDataWithState', formDataWithState);
+    setFormData(formattedData);
+    console.log('formattedData', formattedData);
+
     setModalOpen(true);
   };
 
@@ -155,17 +149,28 @@ const CreateEmployee: React.FC = () => {
         {/* Date of Birth */}
         <label htmlFor='dateOfBirth'>Date of Birth</label>
         <div className='create-employee__card flex justify-content-center'>
-          <Calendar
-            inputId='dateOfBirth'
-            value={dateOfBirth}
-            onChange={(e) => setDateOfBirth(e.value as Date)}
-            dateFormat='dd/mm/yy'
-            aria-label='Select date of birth'
-            data-cy='date-of-birth-calendar'
+          <Controller
+            name='dateOfBirth'
+            control={control}
+            rules={{ required: 'Date of Birth is required' }}
+            render={({ field }) => (
+              <Calendar
+                inputId='dateOfBirth'
+                value={dateOfBirth}
+                onChange={(e) => field.onChange(e.value as Date)}
+                dateFormat='dd/mm/yy'
+                aria-label='Select date of birth'
+                data-cy='date-of-birth-calendar'
+              />
+            )}
           />
           {errors.dateOfBirth && (
-            <span role='alert' aria-live='assertive'>
-              {`Date of Birth is required`}
+            <span
+              role='alert'
+              aria-live='assertive'
+              className='create-employee__error-message'
+            >
+              {errors.dateOfBirth.message}
             </span>
           )}
         </div>
@@ -173,19 +178,29 @@ const CreateEmployee: React.FC = () => {
         {/* Start Date */}
         <label htmlFor='startDate'>Start Date</label>
         <div className='create-employee__card flex justify-content-center'>
-          <Calendar
-            inputId='startDate'
-            value={startDate}
-            onChange={(e) => setStartDate(e.value as Date)}
-            dateFormat='dd/mm/yy'
-            aria-label='Select start Date'
-            data-cy='start-date-calendar'
+          <Controller
+            name='startDate'
+            control={control}
+            rules={{ required: 'startDate is required' }}
+            render={({ field }) => (
+              <Calendar
+                inputId='startDate'
+                value={startDate}
+                onChange={(e) => field.onChange(e.value)}
+                dateFormat='dd/mm/yy'
+                aria-label='Select start Date'
+                data-cy='start-date-calendar'
+              />
+            )}
           />
           {errors.startDate && (
             <span
               role='alert'
               aria-live='assertive'
-            >{`Start Date is required`}</span>
+              className='create-employee__error-message'
+            >
+              {errors.startDate.message}
+            </span>
           )}
         </div>
 
@@ -252,17 +267,33 @@ const CreateEmployee: React.FC = () => {
           {/* State */}
           <label htmlFor='state'>State</label>
           <div className='create-employee__card flex justify-content-center'>
-            <Dropdown
-              inputId='state'
-              value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
-              options={stateOptions}
-              placeholder='Select a State'
-              className='create-employee__stateOptions'
-              aria-label='Options'
-              data-cy='state-dropdown'
+            <Controller
+              control={control}
+              name='state'
+              rules={{ required: 'State is required' }}
+              render={({ field }) => (
+                <Dropdown
+                  inputId='state'
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.value)}
+                  options={stateOptions}
+                  placeholder='Select a State'
+                  aria-label='Options'
+                  data-cy='state-dropdown'
+                  className='create-employee__stateOptions'
+                />
+              )}
             />
           </div>
+          {errors.state && (
+            <span
+              role='alert'
+              aria-live='assertive'
+              className='create-employee__error-message'
+            >
+              {errors.state.message}
+            </span>
+          )}
 
           {/* Zip Code */}
           <label htmlFor='zipCode'>Zip Code</label>
@@ -292,23 +323,31 @@ const CreateEmployee: React.FC = () => {
 
         {/* Department */}
         <label htmlFor='department'>Department</label>
-        <Dropdown
-          inputId='department'
-          {...register('department', { required: true })}
-          data-cy='department-select'
-          value={selectedDepartment}
-          onChange={(e) => setSelectedDepartment(e.target.value)}
-          options={departmentOptions}
-          placeholder='Select a Department'
-          aria-label='department'
-          className='create-employee__departmentOptions'
+        <Controller
+          name='department'
+          control={control}
+          rules={{ required: 'Department is required' }}
+          render={({ field }) => (
+            <Dropdown
+              inputId='department'
+              value={field.value}
+              onChange={(e) => field.onChange(e.value)}
+              options={departmentOptions}
+              placeholder='Select a Department'
+              data-cy='department-select'
+              aria-label='department'
+              className='create-employee__departmentOptions'
+            />
+          )}
         />
         {errors.department && (
           <span
             role='alert'
             aria-live='assertive'
             className='create-employee__error-message'
-          >{`Department is required`}</span>
+          >
+            {errors.department.message}
+          </span>
         )}
         <button
           className='create-employee__button-submit'

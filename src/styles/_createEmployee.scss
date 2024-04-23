@@ -65,6 +65,8 @@ button {
 
 .create-employee__error-message {
   color: var(--color-secondary);
+  display: flex;
+  justify-content: center;
 }
 
 /* Médias queries - Gestion du Responsive */
