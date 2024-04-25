@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
+
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
-
-import Modal from '../../components/Modal/Modal';
+import Modal from 'fb-modal-oc-lib';
 
 import { ListOfStatesAmerican } from '../../service/ListOfStatesAmerican.min';
 import { ListOfDepartment } from '../../service/ListOfDepartment';
 import { format } from '../../utils/Format';
 import { useFormData } from '../../context/CreateEmployeeFormContext';
+
+import '../../index.scss';
 
 const closeButtonImg = require('../../assets/icons/closeButton.png');
 
@@ -40,6 +43,7 @@ interface DepartmentOptions {
  * @returns {JSX.Element} La représentation JSX du formulaire de création d'employé.
  */
 const CreateEmployee: React.FC = () => {
+  let navigate = useNavigate();
   const { setFormData } = useFormData();
   const {
     register,
@@ -49,8 +53,9 @@ const CreateEmployee: React.FC = () => {
   } = useForm<FormInput>();
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+
+  const startDate: Date | null = null;
+  const dateOfBirth: Date | null = null;
 
   const data = ListOfStatesAmerican.getData();
   const stateOptions: StateOptions[] = data.map(({ name }) => ({
@@ -78,12 +83,12 @@ const CreateEmployee: React.FC = () => {
     };
     setFormData(formattedData);
     console.log('formattedData', formattedData);
-
     setModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    navigate('/employees');
   };
 
   return (
@@ -357,10 +362,12 @@ const CreateEmployee: React.FC = () => {
           Save
         </button>
       </form>
+
       <Modal
         isVisible={modalOpen}
-        title='Personalized Title'
-        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus elit libero, at finibus dolor auctor id. Aliquam ut lectus vitae odio tincidunt blandit. Vivamus cursus, lorem ut congue rutrum, lectus eros tristique lectus, vitae imperdiet massa purus a orci. Donec nibh'
+        title='Employee created'
+        description='The employee is created with the information you entered.
+        It can be consulted on the List of all employees page'
         src={closeButtonImg}
         onClose={handleCloseModal}
       />
