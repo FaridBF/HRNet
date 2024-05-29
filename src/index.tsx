@@ -6,7 +6,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import EmployeesList from './features/EmployeesList/EmployeesList';
 import Error404 from './features/Error404/Error404.min';
-import Home from './features/Home/Home.min';
+import Home from './features/Home/Home';
 
 import { CreateEmployeeProvider } from './context/CreateEmployeeFormContext';
 
