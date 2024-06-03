@@ -35,11 +35,21 @@ describe('<CreateEmployee />', () => {
     cy.get('[data-cy=first-name-input]').type('John');
     cy.get('[data-cy=last-name-input]').type('Doe');
     cy.get('[data-cy=date-of-birth-calendar]').click();
+    cy.wait(500); // Attendre que le datepicker soit visible
     cy.get('.p-datepicker').find('.p-datepicker-today').click();
 
     // Sélection de la date de début
-    cy.get('[data-cy=start-date-calendar]').type('13/05/2024');
-    cy.get('.p-datepicker').find('.p-datepicker-today').click();
+    // cy.get('[data-cy=start-date-calendar]').type('13/05/2024');
+    // cy.get('.p-datepicker').find('.p-datepicker-today').click();
+
+    cy.get('[data-cy=start-date-calendar]').click();
+    cy.get('.p-datepicker').should('be.visible');
+    cy.wait(500); // Attendre que le datepicker soit visible
+    cy.get('.p-datepicker')
+      .find('.p-datepicker-today')
+      .should('be.visible')
+      .click();
+
     cy.get('[data-cy=street-input]').type('123 Main St');
     cy.get('[data-cy=city-input]').type('Anytown');
     cy.get('[data-cy=state-dropdown]').click();
