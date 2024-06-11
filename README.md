@@ -50,7 +50,6 @@ npm start
 - [Online-convert](https://www.online-convert.com/) to convert logo into favicon
 - [HeadingsMap](https://chromewebstore.google.com/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi) The extension generates a document-map or index of any web document structured with headings and/or with sections in HTML 5. It shows the headings structure, the errors in the structure (ie. incorrect levels), and it works as HTML5 Outliner too.
 - [WAVE](https://wave.webaim.org/extension/) it's a extension allows web content to be evaluated directly in the browser for accessibility issues, without sending information to the WAVE server, ensuring a 100% private and secure accessibility report.
-- [BEM](https://getbem.com/) is a methodology that helps you to create reusable components and code sharing in front‑end development
 - [Novel Tools](https://www.novel.tools/minify) it allows to Minify the JS/CSS/JSON etc, and help the site load faster and improve the search rankings.
 
 ## Visual illustrations of the “HRNet” interface
